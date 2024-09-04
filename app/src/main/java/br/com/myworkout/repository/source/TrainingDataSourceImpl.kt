@@ -10,11 +10,12 @@ class TrainingDataSourceImpl(
     val context: Context
 ) : TrainingDataSource {
 
-    private val sharedPreferences = context.applicationContext.getSharedPreferences("BD", Context.MODE_PRIVATE)
+    private val sharedPreferences =
+        context.applicationContext.getSharedPreferences(DATABASE_NAME, Context.MODE_PRIVATE)
 
     private val gson: Gson = Gson()
 
-    override fun  getExercisesSP(): TrainingData? {
+    override fun getExercisesSP(): TrainingData? {
         return gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
     }
 
@@ -27,7 +28,8 @@ class TrainingDataSourceImpl(
         type: String,
         image: String?
     ) {
-        val lista = gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
+        val lista =
+            gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
         lista?.exercises?.find {
             it.id == id
         }?.apply {
@@ -41,7 +43,8 @@ class TrainingDataSourceImpl(
     }
 
     override fun addExerciseSP(exercise: Exercise) {
-        val lista = gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
+        val lista =
+            gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
         lista.exercises.add(exercise)
         save(EXERCISES, lista)
     }
@@ -62,6 +65,7 @@ class TrainingDataSourceImpl(
     }
 
     companion object {
+        const val DATABASE_NAME = "my_workout_database"
         const val EXERCISES = "get_exercises_list"
         const val FIRST_ACCESS = "is_first_access"
     }
@@ -162,7 +166,7 @@ class TrainingDataSourceImpl(
     )
 
     init {
-        if(isFirstAccess()) {
+        if (isFirstAccess()) {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.putString(EXERCISES, gson.toJson(exerciseList)).apply()
         } else {

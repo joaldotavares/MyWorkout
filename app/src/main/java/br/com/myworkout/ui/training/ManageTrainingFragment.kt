@@ -79,8 +79,6 @@ class ManageTrainingFragment : Fragment() {
             observerState()
             findNavController().popBackStack()
         }
-
-
     }
 
     private fun observerState() {
@@ -88,13 +86,13 @@ class ManageTrainingFragment : Fragment() {
             when (it) {
                 is StateAction.Update -> Toast.makeText(
                     requireContext(),
-                    "Exercicio criado",
+                    requireContext().getString(R.string.manage_fragment_exercise_create),
                     Toast.LENGTH_LONG
                 ).show()
 
                 is StateAction.Insert -> Toast.makeText(
                     requireContext(),
-                    "Exercicio editado",
+                    requireContext().getString(R.string.manage_fragment_exercise_update),
                     Toast.LENGTH_LONG
                 ).show()
             }
