@@ -13,7 +13,6 @@
         android:background="#FB8560"
         android:textAlignment="center"
         android:theme="@style/Theme.AppCompat.NoActionBar"
-        android:tooltipText="Meu Treino"
         app:title="Meu Treino"
         tools:ignore="MissingConstraints" />
 

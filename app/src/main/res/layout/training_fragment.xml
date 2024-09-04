@@ -17,7 +17,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="@dimen/default_5dp"
-            android:text="Grupo diário:"
+            android:text="@string/training_fragment_daily_group"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -40,35 +40,35 @@
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="A" />
+                android:text="@string/training_fragment_type_a" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_table_group_second"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="B" />
+                android:text="@string/training_fragment_type_b" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_table_group_third"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="C" />
+                android:text="@string/training_fragment_type_c" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_table_group_fourth"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="D" />
+                android:text="@string/training_fragment_type_d" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/button_table_group_add"
                 style="?attr/materialButtonOutlinedStyle"
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
-                android:text="+" />
+                android:text="@string/training_fragment_add_exercise" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
 

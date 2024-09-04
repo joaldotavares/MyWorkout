@@ -1,4 +1,27 @@
 <resources>
     <string name="app_name">Meu Treino</string>
     <string name="back_button">voltar</string>
+    <string name="manage_fragment_exercise_create">Exercício criado</string>
+    <string name="manage_fragment_exercise_update">Exercício editado</string>
+    <string name="details_exercise_fragment_name">Exercicio:</string>
+    <string name="details_exercise_fragment_series">Series:</string>
+    <string name="details_exercise_fragment_repetitions">Repetições:</string>
+    <string name="details_exercise_fragment_load">Carga:</string>
+    <string name="details_exercise_fragment_type">Tipo:</string>
+    <string name="details_exercise_fragment_image_description">Imagem de execução do exercício</string>
+    <string name="exercise_item_load">kg</string>
+    <string name="exercise_item_edit_icon">Icone de edição de exercicio</string>
+    <string name="exercise_item_delete_icon">Icone de exclusão de exercicio</string>
+    <string name="manage_training_hint_name">Nome do exercicio</string>
+    <string name="manage_training_hint_series">Series</string>
+    <string name="manage_training_hint_repetitions">Repetições</string>
+    <string name="manage_training_hint_load">Carga</string>
+    <string name="manage_training_hint_type">Tipo</string>
+    <string name="manage_training_button_save">Salvar</string>
+    <string name="training_fragment_daily_group">Grupo diário:</string>
+    <string name="training_fragment_type_a">A</string>
+    <string name="training_fragment_type_b">B</string>
+    <string name="training_fragment_type_c">C</string>
+    <string name="training_fragment_type_d">D</string>
+    <string name="training_fragment_add_exercise">+</string>
 </resources>
