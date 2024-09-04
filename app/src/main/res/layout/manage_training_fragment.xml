@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="exercise"
+            type="br.com.myworkout.data.Exercise" />
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/edit_training_image"
+                android:layout_width="0dp"
+                android:layout_height="230dp"
+                android:layout_margin="@dimen/default_20dp"
+                android:src="@drawable/rounded_item_bg"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_exercises_name"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_20dp"
+                android:layout_marginTop="@dimen/default_56dp"
+                android:layout_marginEnd="@dimen/default_20dp"
+                android:hint="Nome do exercicio"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/edit_training_image">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_exercises_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="@{exercise.name}"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/default_22sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_exercises_series"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_20dp"
+                android:layout_marginTop="@dimen/default_5dp"
+                android:layout_marginEnd="@dimen/default_20dp"
+                android:hint="Series"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_name">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_exercises_series"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:inputType="number"
+                    android:text="@{exercise.series}"
+                    android:textColor="#292929"
+                    android:textSize="@dimen/default_22sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_exercises_repetitions"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_20dp"
+                android:layout_marginTop="@dimen/default_5dp"
+                android:layout_marginEnd="@dimen/default_20dp"
+                android:hint="Repetições"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_series">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_exercises_repetitions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="@{exercise.repetitions}"
+                    android:textColor="#292929"
+                    android:textSize="@dimen/default_22sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_exercises_load"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_20dp"
+                android:layout_marginTop="@dimen/default_5dp"
+                android:layout_marginEnd="@dimen/default_20dp"
+                android:hint="Carga"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_repetitions">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_exercises_load"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:inputType="numberDecimal"
+                    android:text="@{exercise.load}"
+                    android:textColor="#292929"
+                    android:textSize="@dimen/default_22sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/text_input_layout_exercises_type"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/default_20dp"
+                android:layout_marginTop="@dimen/default_5dp"
+                android:layout_marginEnd="@dimen/default_20dp"
+                android:hint="Tipo"
+                app:boxStrokeWidth="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_load">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/text_input_exercises_type"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@android:color/transparent"
+                    android:fontFamily="sans-serif-black"
+                    android:gravity="center"
+                    android:text="@{exercise.type}"
+                    android:textColor="#292929"
+                    android:textSize="@dimen/default_22sp" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <Button
+                android:id="@+id/edit_training_button"
+                style="@style/Widget.Material3.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/default_20dp"
+                android:text="Salvar"
+                android:textSize="@dimen/default_14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_exercises_type" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+</layout>
