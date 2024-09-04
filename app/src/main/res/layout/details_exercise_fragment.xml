@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="exercise"
+            type="br.com.myworkout.data.Exercise" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageView
+            android:id="@+id/details_training_image"
+            android:layout_width="0dp"
+            android:layout_height="350dp"
+            android:layout_margin="@dimen/default_20dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/border_image"
+            android:elevation="2dp"
+            android:visibility="gone"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/details_name"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_56dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Exercicio: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_training_image" />
+
+        <TextView
+            android:id="@+id/details_exercises_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_56dp"
+            android:layout_marginEnd="@dimen/default_20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{exercise.name}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toEndOf="@+id/details_name"
+            app:layout_constraintTop_toBottomOf="@id/details_training_image"
+            tools:text="Nome do exercicio" />
+
+        <TextView
+            android:id="@+id/details_series"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Series: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_exercises_name" />
+
+        <TextView
+            android:id="@+id/details_exercises_series"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:layout_marginEnd="@dimen/default_20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{exercise.series}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toEndOf="@id/details_series"
+            app:layout_constraintTop_toBottomOf="@id/details_exercises_name"
+            tools:text="Series" />
+
+        <TextView
+            android:id="@+id/details_repetitions"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Repetições: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_series" />
+
+        <TextView
+            android:id="@+id/details_exercises_repetitions"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:layout_marginEnd="@dimen/default_20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{exercise.repetitions}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toEndOf="@id/details_repetitions"
+            app:layout_constraintTop_toBottomOf="@id/details_exercises_series"
+            tools:text="Repetições" />
+
+        <TextView
+            android:id="@+id/details_load"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Carga: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_repetitions" />
+
+        <TextView
+            android:id="@+id/details_exercises_load"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:layout_marginEnd="@dimen/default_20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{exercise.load}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toEndOf="@id/details_load"
+            app:layout_constraintTop_toBottomOf="@id/details_exercises_repetitions"
+            tools:text="Carga" />
+
+        <TextView
+            android:id="@+id/details_type"
+            android:layout_width="120dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:fontFamily="sans-serif-black"
+            android:text="Tipo: "
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/details_load" />
+
+        <TextView
+            android:id="@+id/details_exercises_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/default_20dp"
+            android:layout_marginTop="@dimen/default_20dp"
+            android:layout_marginEnd="@dimen/default_20dp"
+            android:background="@android:color/transparent"
+            android:fontFamily="sans-serif-black"
+            android:gravity="center"
+            android:text="@{exercise.type}"
+            android:textColor="@color/black"
+            android:textSize="@dimen/default_22sp"
+            app:layout_constraintStart_toEndOf="@id/details_type"
+            app:layout_constraintTop_toBottomOf="@id/details_exercises_load"
+            tools:text="Tipo" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

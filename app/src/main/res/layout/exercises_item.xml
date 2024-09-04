@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="@dimen/default_8dp"
+    android:background="@drawable/rounded_item_bg"
+    android:padding="@dimen/default_5dp">
+
+    <TextView
+        android:id="@+id/exercises_item_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="@dimen/default_5dp"
+        android:background="@android:color/transparent"
+        android:fontFamily="sans-serif-black"
+        android:text="Nome do exercicio"
+        android:textColor="@color/black"
+        android:textSize="@dimen/default_22sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/exercises_item_edit"
+        android:layout_width="@dimen/default_20dp"
+        android:layout_height="@dimen/default_20dp"
+        android:layout_marginEnd="@dimen/default_5dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/edit_icon"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/exercises_item_series"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:text="Séries: "
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_name" />
+
+    <TextView
+        android:id="@+id/exercises_item_series_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        app:layout_constraintStart_toEndOf="@+id/exercises_item_series"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_name"
+        tools:text="15" />
+
+    <TextView
+        android:id="@+id/exercises_item_repetitions"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:text="Repetição: "
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_series" />
+
+    <TextView
+        android:id="@+id/exercises_item_repetitions_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/transparent"
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        app:layout_constraintStart_toEndOf="@+id/exercises_item_repetitions"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_series"
+        tools:text="12 a 15" />
+
+    <TextView
+        android:id="@+id/exercises_item_load"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:text="Carga: "
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions" />
+
+
+    <TextView
+        android:id="@+id/exercises_item_load_value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:background="@android:color/transparent"
+        android:inputType="number"
+        android:text="15"
+        android:textColor="#292929"
+        android:textSize="@dimen/default_16sp"
+        app:layout_constraintStart_toEndOf="@+id/exercises_item_load"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions" />
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_5dp"
+        android:layout_marginTop="2dp"
+        android:text="kg(cada lado)"
+        android:textColor="#5C5C5C"
+        android:textSize="@dimen/default_16sp"
+        app:layout_constraintStart_toEndOf="@+id/exercises_item_load_value"
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions" />
+</androidx.constraintlayout.widget.ConstraintLayout>
