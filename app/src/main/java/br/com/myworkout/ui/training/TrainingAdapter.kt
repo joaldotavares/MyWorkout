@@ -19,6 +19,7 @@ class TrainingAdapter(
 
     var onItemClickListener: (news: Exercise) -> Unit = {}
     var onItemEditClickListener: (news: Exercise) -> Unit = {}
+    var onItemDeleteClickListener: (news: Exercise) -> Unit = {}
 
 
     class TrainingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -28,6 +29,7 @@ class TrainingAdapter(
         val load: TextView = itemView.findViewById(R.id.exercises_item_load_value)
         val type: TextView = itemView.findViewById(R.id.exercises_item_name)
         val edit: ImageView = itemView.findViewById(R.id.exercises_item_edit)
+        val delete: ImageView = itemView.findViewById(R.id.exercises_item_delete)
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TrainingViewHolder {
@@ -48,6 +50,10 @@ class TrainingAdapter(
 
         holder.edit.setOnClickListener {
             onItemEditClickListener(training)
+        }
+
+        holder.delete.setOnClickListener {
+            onItemDeleteClickListener(training)
         }
 
         holder.itemView.setOnClickListener {

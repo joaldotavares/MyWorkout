@@ -6,8 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.navArgs
-import br.com.myworkout.databinding.DetailsExerciseFragmentBinding
 import br.com.myworkout.data.Exercise
+import br.com.myworkout.databinding.DetailsExerciseFragmentBinding
 
 class DetailsExerciseFragment : Fragment() {
 
