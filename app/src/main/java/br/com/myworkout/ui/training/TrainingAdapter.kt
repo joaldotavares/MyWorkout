@@ -54,6 +54,8 @@ class TrainingAdapter(
 
         holder.delete.setOnClickListener {
             onItemDeleteClickListener(training)
+            trainings.exercises.removeAt(position)
+            notifyItemRemoved(position)
         }
 
         holder.itemView.setOnClickListener {

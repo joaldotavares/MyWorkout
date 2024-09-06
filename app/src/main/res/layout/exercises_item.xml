@@ -57,7 +57,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_name"
-        tools:text="Séries: " />
+        android:text="Séries: " />
 
     <TextView
         android:id="@+id/exercises_item_series_value"
@@ -84,7 +84,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_series"
-        tools:text="Repetição: " />
+        android:text="Repetição: " />
 
     <TextView
         android:id="@+id/exercises_item_repetitions_value"
@@ -110,7 +110,7 @@
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions"
-        tools:text="Carga: " />
+        android:text="Carga: " />
 
 
     <TextView

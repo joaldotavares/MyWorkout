@@ -12,7 +12,9 @@ import br.com.myworkout.ui.state.StateError
 import br.com.myworkout.ui.state.StateLoading
 import br.com.myworkout.ui.state.StateResponse
 import br.com.myworkout.ui.state.StateSuccess
+import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.INSERT
 import kotlinx.coroutines.launch
+import java.lang.Thread.State
 
 class TrainingViewModel(
     private val repository: TrainingRepository
@@ -23,6 +25,7 @@ class TrainingViewModel(
 
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
+
 
     fun getTrainings() {
         viewModelScope.launch {
@@ -43,15 +46,27 @@ class TrainingViewModel(
         repetitions: String,
         load: String,
         type: String,
-        image: String? = null
+        image: String? = null,
+        state: String
     ) {
         val exercise = Exercise(id = id, name, series, repetitions, load, type)
-        if (id.length > 5) {
+        if (state == INSERT) {
             repository.addExercise(exercise)
             _observerState.value = StateAction.Update
         } else {
             repository.updateExercise(id, name, series, repetitions, load, type)
             _observerState.value = StateAction.Insert
+        }
+    }
+
+    fun deleteExercises(exercise: Exercise) {
+        viewModelScope.launch {
+            try {
+                repository.deleteExercise(exercise)
+                _observerState.value = StateAction.Delete
+            } catch (e: Exception) {
+
+            }
         }
     }
 
@@ -68,6 +83,16 @@ class TrainingViewModel(
                 _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))
             } catch (e: Exception) {
                 _trainingViewModel.postValue(StateError())
+            }
+        }
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        viewModelScope.launch {
+            try {
+                repository.deleteExercise(exercise)
+            } catch (e: Exception) {
+
             }
         }
     }

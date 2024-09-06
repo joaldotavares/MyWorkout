@@ -8,6 +8,7 @@
     <dimen name="default_24dp">24dp</dimen>
     <dimen name="default_28dp">28dp</dimen>
     <dimen name="default_56dp">56dp</dimen>
+    <dimen name="default_112dp">112dp</dimen>
 
 
     <dimen name="default_14sp">14sp</dimen>
