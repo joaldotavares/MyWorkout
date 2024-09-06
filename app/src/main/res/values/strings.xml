@@ -3,6 +3,7 @@
     <string name="back_button">voltar</string>
     <string name="manage_fragment_exercise_create">Exercício criado</string>
     <string name="manage_fragment_exercise_update">Exercício editado</string>
+    <string name="manage_fragment_exercise_delete">Exercício excluído</string>
     <string name="details_exercise_fragment_name">Exercicio:</string>
     <string name="details_exercise_fragment_series">Series:</string>
     <string name="details_exercise_fragment_repetitions">Repetições:</string>

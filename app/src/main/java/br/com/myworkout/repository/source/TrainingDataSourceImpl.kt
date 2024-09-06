@@ -49,6 +49,13 @@ class TrainingDataSourceImpl(
         save(EXERCISES, lista)
     }
 
+    override fun deleteExerciseSP(exercise: Exercise) {
+        val lista =
+        gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
+        lista.exercises.remove(exercise)
+        save(EXERCISES, lista)
+    }
+
     override fun <T> save(key: String, data: T) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(key, gson.toJson(data)).apply()
@@ -70,105 +77,10 @@ class TrainingDataSourceImpl(
         const val FIRST_ACCESS = "is_first_access"
     }
 
-    private val exerciseList = TrainingData(
-        exercises = mutableListOf(
-            Exercise(
-                id = "1",
-                name = "Supino Reto",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "2",
-                name = "Supino Inclinado",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "3",
-                name = "Crucifixo Inclinado",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "4",
-                name = "Voador",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "5",
-                name = "Articulado",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "6",
-                name = "Triceps Corda",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "7",
-                name = "Triceps Pulley",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "8",
-                name = "Triceps no aparaelho",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "A",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "9",
-                name = "Rosca Direta",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "B",
-                image = "xxxx"
-            ),
-            Exercise(
-                id = "10",
-                name = "Rosca Direta",
-                series = "3",
-                repetitions = "12 a 15",
-                load = "15",
-                type = "B",
-                image = "xxxx"
-            )
-        )
-    )
-
     init {
         if (isFirstAccess()) {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
-            editor.putString(EXERCISES, gson.toJson(exerciseList)).apply()
+            editor.putString(EXERCISES, gson.toJson(TrainingData(mutableListOf()))).apply()
         } else {
             setNotFirstAccess()
         }

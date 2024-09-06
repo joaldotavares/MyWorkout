@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/trainingFragment">
 
@@ -14,6 +15,9 @@
         <action
             android:id="@+id/action_trainingFragment_to_detailsExerciseFragment"
             app:destination="@id/detailsExerciseFragment" />
+        <action
+            android:id="@+id/action_trainingFragment_to_errorFragment"
+            app:destination="@id/errorFragment" />
     </fragment>
     <fragment
         android:id="@+id/manageTrainingFragment"
@@ -32,4 +36,8 @@
             android:name="exerciseDetail"
             app:argType="br.com.myworkout.data.Exercise" />
     </fragment>
+    <fragment
+        android:id="@+id/errorFragment"
+        android:name="br.com.myworkout.ui.training.ErrorFragment"
+        android:label="Desculpe" />
 </navigation>

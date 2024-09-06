@@ -12,6 +12,7 @@ import br.com.myworkout.R
 import br.com.myworkout.commons.extensions.nonNullObserver
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.databinding.TrainingFragmentBinding
+import br.com.myworkout.ui.state.StateError
 import br.com.myworkout.ui.state.StateLoading
 import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
@@ -88,9 +89,14 @@ class TrainingFragment : Fragment() {
             when (it) {
                 is StateLoading -> setUpLoading()
                 is StateSuccess -> it.data?.let { it1 -> setUpSuccess(it1) }
-                else -> {}
+                is StateError -> sendToPageError()
             }
         }
+    }
+
+    private fun sendToPageError() {
+        val directions = TrainingFragmentDirections.actionTrainingFragmentToErrorFragment()
+        findNavController().navigate(directions)
     }
 
     private fun setUpSuccess(data: TrainingData) {
@@ -109,20 +115,42 @@ class TrainingFragment : Fragment() {
         binding.fragmentTrainingRecyclerView.layoutManager =
             LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
 
-        adapter.onItemEditClickListener = { it ->
-            val directions =
-                TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(it)
-            findNavController().navigate(directions)
-        }
+        setDeleteIcon()
 
-        addButtonGroup.setOnClickListener {
-            val directions = TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
-            findNavController().navigate(directions)
-        }
+        setEditClickAdapter()
 
+        setAddButton()
+
+        setItemClicked()
+    }
+
+    private fun setItemClicked() {
         adapter.onItemClickListener = { it ->
             val directions =
                 TrainingFragmentDirections.actionTrainingFragmentToDetailsExerciseFragment(it)
+            findNavController().navigate(directions)
+        }
+    }
+
+    private fun setAddButton() {
+        addButtonGroup.setOnClickListener {
+            val directions =
+                TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
+            findNavController().navigate(directions)
+        }
+    }
+
+    private fun setDeleteIcon() {
+        adapter.onItemDeleteClickListener = {
+            viewModel.deleteExercise(it)
+            requireView().requestFocus()
+        }
+    }
+
+    private fun setEditClickAdapter() {
+        adapter.onItemEditClickListener = { it ->
+            val directions =
+                TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(it)
             findNavController().navigate(directions)
         }
     }

@@ -20,4 +20,5 @@ interface TrainingDataSource {
     fun isFirstAccess() : Boolean
     fun setNotFirstAccess()
     fun addExerciseSP(exercise: Exercise)
+    fun deleteExerciseSP(exercise: Exercise)
 }
