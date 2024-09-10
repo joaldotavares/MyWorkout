@@ -136,31 +136,30 @@
 
             </com.google.android.material.textfield.TextInputLayout>
 
-            <com.google.android.material.textfield.TextInputLayout
+            <TextView
                 android:id="@+id/text_input_layout_exercises_type"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/default_20dp"
                 android:layout_marginTop="@dimen/default_5dp"
                 android:layout_marginEnd="@dimen/default_20dp"
-                android:hint="@string/manage_training_hint_type"
-                app:boxStrokeWidth="0dp"
+                android:text="@string/manage_training_hint_type"
+                android:textAlignment="center"
+                android:textColor="#666666"
+                android:textSize="@dimen/default_18sp"
+                android:textStyle="bold"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_load">
+                app:layout_constraintTop_toBottomOf="@+id/text_input_layout_exercises_load" />
 
-                <com.google.android.material.textfield.TextInputEditText
-                    android:id="@+id/text_input_exercises_type"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@android:color/transparent"
-                    android:fontFamily="sans-serif-black"
-                    android:gravity="center"
-                    android:text="@{exercise.type}"
-                    android:textColor="#292929"
-                    android:textSize="@dimen/default_22sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
+            <Spinner
+                android:id="@+id/manage_training_fragment_spinner"
+                style="@style/Widget.Material3.MaterialTimePicker.Button"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/text_input_layout_exercises_type" />
 
             <Button
                 android:id="@+id/edit_training_button"
@@ -169,10 +168,11 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/default_28dp"
                 android:text="@string/manage_training_button_save"
+                android:textAlignment="center"
                 android:textSize="@dimen/default_14sp"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/text_input_layout_exercises_type" />
+                app:layout_constraintTop_toBottomOf="@id/manage_training_fragment_spinner" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
