@@ -12,7 +12,9 @@ import br.com.myworkout.ui.state.StateError
 import br.com.myworkout.ui.state.StateLoading
 import br.com.myworkout.ui.state.StateResponse
 import br.com.myworkout.ui.state.StateSuccess
+import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.INSERT
 import kotlinx.coroutines.launch
+import java.lang.Thread.State
 
 class TrainingViewModel(
     private val repository: TrainingRepository
@@ -23,6 +25,7 @@ class TrainingViewModel(
 
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
+
 
     fun getTrainings() {
         viewModelScope.launch {
@@ -43,15 +46,34 @@ class TrainingViewModel(
         repetitions: String,
         load: String,
         type: String,
-        image: String? = null
+        image: String? = null,
+        state: String
     ) {
-        val exercise = Exercise(id = id, name, series, repetitions, load, type)
-        if (id.length > 5) {
-            repository.addExercise(exercise)
+        val exercise = Exercise(
+            id = id,
+            name = name,
+            series = series,
+            repetitions = repetitions,
+            load = load,
+            type = type
+        )
+        if (state == INSERT) {
+            repository.insertExercise(exercise)
             _observerState.value = StateAction.Update
         } else {
             repository.updateExercise(id, name, series, repetitions, load, type)
             _observerState.value = StateAction.Insert
+        }
+    }
+
+    fun deleteExercise(exercise: Exercise) {
+        viewModelScope.launch {
+            try {
+                repository.deleteExercise(exercise)
+                _observerState.value = StateAction.Delete
+            } catch (e: Exception) {
+
+            }
         }
     }
 
@@ -60,9 +82,9 @@ class TrainingViewModel(
             val responseSpecifyType = mutableListOf<Exercise>()
             _trainingViewModel.postValue(StateLoading())
             try {
-                for (exercices in repository.getTrainingData()?.exercises!!) {
-                    if (exercices.type == trainingType) {
-                        responseSpecifyType.add(exercices)
+                repository.getTrainingData()?.exercises?.forEach { exercises ->
+                    if (exercises.type == trainingType) {
+                        responseSpecifyType.add(exercises)
                     }
                 }
                 _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))

@@ -3,6 +3,7 @@
     <string name="back_button">voltar</string>
     <string name="manage_fragment_exercise_create">Exercício criado</string>
     <string name="manage_fragment_exercise_update">Exercício editado</string>
+    <string name="manage_fragment_exercise_delete">Exercício excluído</string>
     <string name="details_exercise_fragment_name">Exercicio:</string>
     <string name="details_exercise_fragment_series">Series:</string>
     <string name="details_exercise_fragment_repetitions">Repetições:</string>
@@ -24,4 +25,6 @@
     <string name="training_fragment_type_c">C</string>
     <string name="training_fragment_type_d">D</string>
     <string name="training_fragment_add_exercise">+</string>
+    <string name="error_fragment_text">Ops, algo saiu do controle.</string>
+    <string name="error_fragment_subtitle">Estamos trabalhando para solucioná-lo!</string>
 </resources>

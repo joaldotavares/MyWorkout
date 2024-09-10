@@ -30,6 +30,7 @@ class ManageTrainingFragment : Fragment() {
     private lateinit var series: TextInputEditText
     private lateinit var repetitions: TextInputEditText
     private lateinit var load: TextInputEditText
+    // COLOCAR SPINNER NO LUGAR DE DIGITAVEL
     private lateinit var type: TextInputEditText
 
     private val viewModel: TrainingViewModel by lazy {
@@ -74,11 +75,16 @@ class ManageTrainingFragment : Fragment() {
                 series = series.text.toString(),
                 repetitions = repetitions.text.toString(),
                 load = load.text.toString(),
-                type = type.text.toString()
+                type = type.text.toString(),
+                state = setIsso(exercise?.id)
             )
             observerState()
             findNavController().popBackStack()
         }
+    }
+
+    fun setIsso(id: String?) : String {
+        return if (id == null) INSERT else UPDATE
     }
 
     private fun observerState() {
@@ -95,7 +101,18 @@ class ManageTrainingFragment : Fragment() {
                     requireContext().getString(R.string.manage_fragment_exercise_update),
                     Toast.LENGTH_LONG
                 ).show()
+
+                is StateAction.Delete -> Toast.makeText(
+                    requireContext(),
+                    requireContext().getString(R.string.manage_fragment_exercise_delete),
+                    Toast.LENGTH_LONG
+                ).show()
             }
         }
+    }
+
+    companion object {
+        const val UPDATE = "Update"
+        const val INSERT = "Insert"
     }
 }

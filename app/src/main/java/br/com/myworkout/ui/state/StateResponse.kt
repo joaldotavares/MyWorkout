@@ -9,4 +9,5 @@ class StateLoading<T> : StateResponse<T>()
 sealed class StateAction {
     data object Insert : StateAction()
     data object Update : StateAction()
+    data object Delete : StateAction()
 }
