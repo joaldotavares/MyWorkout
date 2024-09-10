@@ -25,4 +25,6 @@
     <string name="training_fragment_type_c">C</string>
     <string name="training_fragment_type_d">D</string>
     <string name="training_fragment_add_exercise">+</string>
+    <string name="error_fragment_text">Ops, algo saiu do controle.</string>
+    <string name="error_fragment_subtitle">Estamos trabalhando para solucioná-lo!</string>
 </resources>
