@@ -49,9 +49,16 @@ class TrainingViewModel(
         image: String? = null,
         state: String
     ) {
-        val exercise = Exercise(id = id, name, series, repetitions, load, type)
+        val exercise = Exercise(
+            id = id,
+            name = name,
+            series = series,
+            repetitions = repetitions,
+            load = load,
+            type = type
+        )
         if (state == INSERT) {
-            repository.addExercise(exercise)
+            repository.insertExercise(exercise)
             _observerState.value = StateAction.Update
         } else {
             repository.updateExercise(id, name, series, repetitions, load, type)
@@ -59,7 +66,7 @@ class TrainingViewModel(
         }
     }
 
-    fun deleteExercises(exercise: Exercise) {
+    fun deleteExercise(exercise: Exercise) {
         viewModelScope.launch {
             try {
                 repository.deleteExercise(exercise)
@@ -75,24 +82,14 @@ class TrainingViewModel(
             val responseSpecifyType = mutableListOf<Exercise>()
             _trainingViewModel.postValue(StateLoading())
             try {
-                for (exercices in repository.getTrainingData()?.exercises!!) {
-                    if (exercices.type == trainingType) {
-                        responseSpecifyType.add(exercices)
+                repository.getTrainingData()?.exercises?.forEach { exercises ->
+                    if (exercises.type == trainingType) {
+                        responseSpecifyType.add(exercises)
                     }
                 }
                 _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))
             } catch (e: Exception) {
                 _trainingViewModel.postValue(StateError())
-            }
-        }
-    }
-
-    fun deleteExercise(exercise: Exercise) {
-        viewModelScope.launch {
-            try {
-                repository.deleteExercise(exercise)
-            } catch (e: Exception) {
-
             }
         }
     }

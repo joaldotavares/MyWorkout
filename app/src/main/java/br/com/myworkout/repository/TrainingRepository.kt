@@ -15,7 +15,7 @@ interface TrainingRepository {
         image: String? = null
     )
 
-    fun addExercise(exercise: Exercise)
+    fun insertExercise(exercise: Exercise)
 
     fun deleteExercise(exercise: Exercise)
 }

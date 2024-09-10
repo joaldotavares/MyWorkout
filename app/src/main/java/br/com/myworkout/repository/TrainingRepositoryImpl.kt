@@ -33,7 +33,7 @@ class TrainingRepositoryImpl(
         )
     }
 
-    override fun addExercise(exercise: Exercise) {
+    override fun insertExercise(exercise: Exercise) {
         dataSource.addExerciseSP(exercise)
     }
 
