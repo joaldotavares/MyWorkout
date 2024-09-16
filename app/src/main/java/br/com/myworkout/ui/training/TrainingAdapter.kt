@@ -20,7 +20,6 @@ class TrainingAdapter(
 
     var onItemClickListener: (exercise: Exercise) -> Unit = {}
     var onItemEditClickListener: (exercise: Exercise) -> Unit = {}
-    var onItemDeleteClickListener: (exercise: Exercise) -> Unit = {}
 
     class TrainingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.exercises_item_name)

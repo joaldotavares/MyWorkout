@@ -119,9 +119,7 @@ class TrainingFragment : Fragment() {
         adapter = TrainingAdapter(it.exercises, viewModel)
         binding.fragmentTrainingRecyclerView.adapter = adapter
 
-        setUpSwipe()
-
-        setDeleteIcon()
+        setUpSwipeToDelete()
 
         setEditClickAdapter()
 
@@ -130,7 +128,7 @@ class TrainingFragment : Fragment() {
         setItemClicked()
     }
 
-    private fun setUpSwipe() {
+    private fun setUpSwipeToDelete() {
         val swipeHandler = object : SwipeToDeleteCallback() {
             override fun onSwiped(viewHolder: RecyclerView.ViewHolder, direction: Int) {
 
@@ -154,13 +152,6 @@ class TrainingFragment : Fragment() {
             }
             .create()
             .show()
-    }
-
-    private fun setDeleteIcon() {
-        adapter.onItemDeleteClickListener = {
-            viewModel.deleteExercise(it)
-            requireView().requestFocus()
-        }
     }
 
     private fun setItemClicked() {
