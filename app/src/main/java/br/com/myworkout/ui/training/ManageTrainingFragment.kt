@@ -4,7 +4,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
@@ -20,7 +23,7 @@ import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
 import com.google.android.material.textfield.TextInputEditText
 import java.util.UUID
 
-class ManageTrainingFragment : Fragment() {
+class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
     private lateinit var binding: ManageTrainingFragmentBinding
     private val args by navArgs<ManageTrainingFragmentArgs>()
@@ -30,8 +33,8 @@ class ManageTrainingFragment : Fragment() {
     private lateinit var series: TextInputEditText
     private lateinit var repetitions: TextInputEditText
     private lateinit var load: TextInputEditText
-    // COLOCAR SPINNER NO LUGAR DE DIGITAVEL
-    private lateinit var type: TextInputEditText
+    private lateinit var type: String
+    private lateinit var spinner: Spinner
 
     private val viewModel: TrainingViewModel by lazy {
         ViewModelProvider(
@@ -51,7 +54,7 @@ class ManageTrainingFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ManageTrainingFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
@@ -59,14 +62,12 @@ class ManageTrainingFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        saveButton = view.findViewById(R.id.edit_training_button)
-        name = view.findViewById(R.id.text_input_exercises_name)
-        series = view.findViewById(R.id.text_input_exercises_series)
-        repetitions = view.findViewById(R.id.text_input_exercises_repetitions)
-        load = view.findViewById(R.id.text_input_exercises_load)
-        type = view.findViewById(R.id.text_input_exercises_type)
+
+        setUpViews(view)
 
         binding.exercise = this.exercise
+
+        setUpSpinner()
 
         saveButton.setOnClickListener {
             viewModel.manageTraining(
@@ -75,15 +76,40 @@ class ManageTrainingFragment : Fragment() {
                 series = series.text.toString(),
                 repetitions = repetitions.text.toString(),
                 load = load.text.toString(),
-                type = type.text.toString(),
-                state = setIsso(exercise?.id)
+                type = type,
+                state = setType(exercise?.id)
             )
             observerState()
             findNavController().popBackStack()
         }
     }
 
-    fun setIsso(id: String?) : String {
+    private fun setUpViews(view: View) {
+        saveButton = view.findViewById(R.id.edit_training_button)
+        name = view.findViewById(R.id.text_input_exercises_name)
+        series = view.findViewById(R.id.text_input_exercises_series)
+        repetitions = view.findViewById(R.id.text_input_exercises_repetitions)
+        load = view.findViewById(R.id.text_input_exercises_load)
+        spinner = view.findViewById(R.id.manage_training_fragment_spinner)
+    }
+
+    private fun setUpSpinner() {
+        spinner.onItemSelectedListener = this
+
+        ArrayAdapter.createFromResource(
+            requireContext(),
+            R.array.planets_array,
+            R.layout.spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            adapter.getPosition(exercise?.type)
+
+            spinner.adapter = adapter
+            spinner.setSelection(adapter.getPosition(exercise?.type))
+        }
+    }
+
+    private fun setType(id: String?): String {
         return if (id == null) INSERT else UPDATE
     }
 
@@ -114,5 +140,13 @@ class ManageTrainingFragment : Fragment() {
     companion object {
         const val UPDATE = "Update"
         const val INSERT = "Insert"
+    }
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        type = parent?.getItemAtPosition(position).toString()
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {
+        TODO("Not yet implemented")
     }
 }
