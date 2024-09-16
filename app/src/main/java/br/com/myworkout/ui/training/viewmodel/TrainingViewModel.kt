@@ -23,6 +23,9 @@ class TrainingViewModel(
     private val _trainingViewModel = MutableLiveData<StateResponse<TrainingData>>()
     val trainingViewModel: LiveData<StateResponse<TrainingData>> get() = _trainingViewModel
 
+    private val _specifyTrainingViewModel = MutableLiveData<StateResponse<TrainingData>>()
+    val specifyTrainingViewModel: LiveData<StateResponse<TrainingData>> get() = _trainingViewModel
+
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
 
@@ -72,25 +75,23 @@ class TrainingViewModel(
                 repository.deleteExercise(exercise)
                 _observerState.value = StateAction.Delete
             } catch (e: Exception) {
-
             }
         }
     }
 
     fun getSpecifyTraining(trainingType: String) {
-        viewModelScope.launch {
-            val responseSpecifyType = mutableListOf<Exercise>()
-            _trainingViewModel.postValue(StateLoading())
-            try {
-                repository.getTrainingData()?.exercises?.forEach { exercises ->
-                    if (exercises.type == trainingType) {
-                        responseSpecifyType.add(exercises)
-                    }
+        val responseSpecifyType = mutableListOf<Exercise>()
+        _trainingViewModel.postValue(StateLoading())
+        responseSpecifyType.clear()
+        try {
+            repository.getTrainingData()?.exercises?.forEach { exercises ->
+                if (exercises.type == trainingType) {
+                    responseSpecifyType.add(exercises)
                 }
-                _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))
-            } catch (e: Exception) {
-                _trainingViewModel.postValue(StateError())
             }
+            _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))
+        } catch (e: Exception) {
+            _trainingViewModel.postValue(StateError())
         }
     }
 }
