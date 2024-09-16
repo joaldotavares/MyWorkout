@@ -51,7 +51,7 @@ class TrainingDataSourceImpl(
 
     override fun deleteExerciseSP(exercise: Exercise) {
         val lista =
-        gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
+            gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
         lista.exercises.remove(exercise)
         save(EXERCISES, lista)
     }
@@ -78,6 +78,7 @@ class TrainingDataSourceImpl(
     }
 
     init {
+
         if (isFirstAccess()) {
             val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.putString(EXERCISES, gson.toJson(TrainingData(mutableListOf()))).apply()
