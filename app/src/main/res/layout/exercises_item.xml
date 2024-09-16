@@ -21,6 +21,7 @@
         android:textSize="@dimen/default_22sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/exercises_item_edit"
         tools:text="Nome do exercicio" />
 
     <ImageView
@@ -54,7 +55,7 @@
         android:layout_marginTop="2dp"
         android:text="Séries: "
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_name" />
@@ -68,7 +69,7 @@
         android:background="@android:color/transparent"
         android:inputType="number"
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         app:layout_constraintStart_toEndOf="@+id/exercises_item_series"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_name"
         tools:text="15" />
@@ -81,7 +82,7 @@
         android:layout_marginTop="2dp"
         android:text="Repetição: "
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_series" />
@@ -94,7 +95,7 @@
         android:layout_marginTop="2dp"
         android:background="@android:color/transparent"
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         app:layout_constraintStart_toEndOf="@+id/exercises_item_repetitions"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_series"
         tools:text="12 a 15" />
@@ -105,12 +106,14 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_5dp"
         android:layout_marginTop="2dp"
+        android:layout_marginBottom="@dimen/default_5dp"
         android:text="Carga: "
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions" />
+        app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 
     <TextView
@@ -122,7 +125,7 @@
         android:background="@android:color/transparent"
         android:inputType="number"
         android:textColor="#292929"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         app:layout_constraintStart_toEndOf="@+id/exercises_item_load"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions"
         tools:text="15" />
@@ -134,7 +137,7 @@
         android:layout_marginTop="2dp"
         android:text="@string/exercise_item_load"
         android:textColor="@color/load_kg_color"
-        android:textSize="@dimen/default_16sp"
+        android:textSize="@dimen/default_18sp"
         app:layout_constraintStart_toEndOf="@+id/exercises_item_load_value"
         app:layout_constraintTop_toBottomOf="@id/exercises_item_repetitions" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,9 +2,13 @@ package br.com.myworkout.ui.training
 
 import android.app.AlertDialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -21,6 +25,7 @@ import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
 import com.google.android.material.button.MaterialButton
+import com.google.android.material.button.MaterialButtonToggleGroup
 
 class TrainingFragment : Fragment() {
 
@@ -32,24 +37,15 @@ class TrainingFragment : Fragment() {
     }
 
     private lateinit var firstButtonGroup: MaterialButton
-
     private lateinit var secondButtonGroup: MaterialButton
-
     private lateinit var thirdButtonGroup: MaterialButton
-
     private lateinit var fourthButtonGroup: MaterialButton
-
     private lateinit var addButtonGroup: MaterialButton
-
-    private lateinit var recyclerView: RecyclerView
+    private lateinit var groupButton: MaterialButtonToggleGroup
 
     private lateinit var binding: TrainingFragmentBinding
 
     private lateinit var adapter: TrainingAdapter
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -61,16 +57,46 @@ class TrainingFragment : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        when (groupButton.checkedButtonId) {
+            firstButtonGroup.id -> {
+                getSpecify(firstButtonGroup.text.toString())
+            }
+            secondButtonGroup.id -> {
+                getSpecify(secondButtonGroup.text.toString())
+            }
+            thirdButtonGroup.id -> {
+                getSpecify(thirdButtonGroup.text.toString())
+            }
+            fourthButtonGroup.id -> {
+                getSpecify(fourthButtonGroup.text.toString())
+            }
+        }
+    }
+
+    private fun getSpecify(type: String) {
+        viewModel.getSpecifyTraining(type)
+    }
+
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        firstButtonGroup = view.findViewById(R.id.button_table_group_first)
-        secondButtonGroup = view.findViewById(R.id.button_table_group_second)
-        thirdButtonGroup = view.findViewById(R.id.button_table_group_third)
-        fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
-        addButtonGroup = view.findViewById(R.id.button_table_group_add)
-        recyclerView = view.findViewById(R.id.fragment_training_recycler_view)
+        setUpViews(view)
 
+        setUpButtonGroupAction()
+
+        viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
+            when (it) {
+                is StateLoading -> setUpLoading()
+                is StateSuccess -> it.data?.let { it1 -> setUpSuccess(it1) }
+                is StateError -> sendToPageError()
+            }
+        }
+    }
+
+    private fun setUpButtonGroupAction() {
         firstButtonGroup.setOnClickListener {
             viewModel.getSpecifyTraining(firstButtonGroup.text.toString())
         }
@@ -83,29 +109,38 @@ class TrainingFragment : Fragment() {
         fourthButtonGroup.setOnClickListener {
             viewModel.getSpecifyTraining(fourthButtonGroup.text.toString())
         }
+    }
 
-        viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
-            when (it) {
-                is StateLoading -> setUpLoading()
-                is StateSuccess -> it.data?.let { it1 -> setUpSuccess(it1) }
-                is StateError -> sendToPageError()
-            }
-        }
-
-
+    private fun setUpViews(view: View) {
+        firstButtonGroup = view.findViewById(R.id.button_table_group_first)
+        secondButtonGroup = view.findViewById(R.id.button_table_group_second)
+        thirdButtonGroup = view.findViewById(R.id.button_table_group_third)
+        fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
+        addButtonGroup = view.findViewById(R.id.button_table_group_add)
+        groupButton = view.findViewById(R.id.table_group_buttons)
     }
 
     private fun sendToPageError() {
+        binding.fragmentTrainingProgressBar.visibility = GONE
         val directions = TrainingFragmentDirections.actionTrainingFragmentToErrorFragment()
         findNavController().navigate(directions)
     }
 
     private fun setUpSuccess(data: TrainingData) {
+        binding.fragmentTrainingProgressBar.visibility = GONE
+        binding.fragmentTrainingRecyclerView.visibility = VISIBLE
+        Log.i("ID SELECIONADO", "${groupButton.checkedButtonId}")
+        Log.i("ID PRIMEIRO","${firstButtonGroup.id}")
+        Log.i("ID SEGUNDO","${secondButtonGroup.id}")
+        Log.i("ID TERCEIRO","${thirdButtonGroup.id}")
+        Log.i("ID QUARTO","${fourthButtonGroup.id}")
+
         configureAdapter(data)
     }
 
     private fun setUpLoading() {
-        TODO("Not yet implemented")
+        binding.fragmentTrainingProgressBar.visibility = VISIBLE
+        binding.fragmentTrainingRecyclerView.visibility = GONE
     }
 
     private fun configureAdapter(
@@ -117,11 +152,8 @@ class TrainingFragment : Fragment() {
         binding.fragmentTrainingRecyclerView.adapter = adapter
 
         setUpSwipeToDeleteExercise()
-
         setEditClickAdapter()
-
         setAddButton()
-
         setExerciseItemClicked()
     }
 
