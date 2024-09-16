@@ -23,24 +23,8 @@ class TrainingViewModel(
     private val _trainingViewModel = MutableLiveData<StateResponse<TrainingData>>()
     val trainingViewModel: LiveData<StateResponse<TrainingData>> get() = _trainingViewModel
 
-    private val _specifyTrainingViewModel = MutableLiveData<StateResponse<TrainingData>>()
-    val specifyTrainingViewModel: LiveData<StateResponse<TrainingData>> get() = _trainingViewModel
-
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
-
-
-    fun getTrainings() {
-        viewModelScope.launch {
-            _trainingViewModel.postValue(StateLoading())
-            try {
-                val response = repository.getTrainingData()
-                _trainingViewModel.postValue(StateSuccess(response))
-            } catch (e: Exception) {
-                _trainingViewModel.postValue(StateError())
-            }
-        }
-    }
 
     fun manageTraining(
         id: String,
