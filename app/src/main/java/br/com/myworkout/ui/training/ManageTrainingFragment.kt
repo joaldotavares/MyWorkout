@@ -98,7 +98,7 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
 
         ArrayAdapter.createFromResource(
             requireContext(),
-            R.array.planets_array,
+            R.array.type_trainigns,
             R.layout.spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
