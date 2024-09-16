@@ -14,7 +14,7 @@ class ErrorFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         binding = ErrorFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
