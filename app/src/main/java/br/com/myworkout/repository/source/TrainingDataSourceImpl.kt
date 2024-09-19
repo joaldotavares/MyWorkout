@@ -26,7 +26,8 @@ class TrainingDataSourceImpl(
         repetitions: String,
         load: String,
         type: String,
-        image: String?
+        image: String?,
+        isChecked: Boolean
     ) {
         val lista =
             gson.fromJson(sharedPreferences.getString(EXERCISES, null), TrainingData::class.java)
@@ -38,6 +39,7 @@ class TrainingDataSourceImpl(
             this.repetitions = repetitions
             this.load = load
             this.type = type
+            this.check = isChecked
         }
         save(EXERCISES, lista)
     }

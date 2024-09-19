@@ -12,7 +12,8 @@ interface TrainingRepository {
         repetitions: String,
         load: String,
         type: String,
-        image: String? = null
+        image: String? = null,
+        isChecked: Boolean
     )
 
     fun insertExercise(exercise: Exercise)

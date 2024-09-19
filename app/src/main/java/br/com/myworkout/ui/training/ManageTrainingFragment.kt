@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
+import android.widget.CheckBox
 import android.widget.Spinner
 import android.widget.Toast
 import androidx.fragment.app.Fragment
@@ -77,7 +78,8 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 repetitions = repetitions.text.toString(),
                 load = load.text.toString(),
                 type = type,
-                state = setType(exercise?.id)
+                state = setState(exercise?.id),
+                isCheck = false
             )
             observerState()
             findNavController().popBackStack()
@@ -109,7 +111,7 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
     }
 
-    private fun setType(id: String?): String {
+    private fun setState(id: String?): String {
         return if (id == null) INSERT else UPDATE
     }
 
