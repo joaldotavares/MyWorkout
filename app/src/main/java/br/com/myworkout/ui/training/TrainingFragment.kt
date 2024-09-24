@@ -141,6 +141,11 @@ class TrainingFragment : Fragment() {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
+        if (data.exercises.size < 1) {
+            finishTrainingButton.visibility = GONE
+        } else {
+            finishTrainingButton.visibility = VISIBLE
+        }
         configureAdapter(data)
     }
 
@@ -181,7 +186,10 @@ class TrainingFragment : Fragment() {
         builder.setMessage(requireContext().getString(R.string.training_fragment_delete_exercise_message))
             .setPositiveButton(requireActivity().getString(R.string.training_fragment_delete_exercise_confirm)) { _, _ ->
                 adapter.removeExerciseOnPosition(viewHolder.bindingAdapterPosition)
-                requireContext().showSnackBar(binding.root, R.string.training_fragment_delete_exercise_confirme_snack)
+                requireContext().showSnackBar(
+                    binding.root,
+                    R.string.training_fragment_delete_exercise_confirme_snack
+                )
             }
             .setNegativeButton(requireActivity().getString(R.string.training_fragment_delete_exercise_cancel)) { _, _ ->
                 adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
