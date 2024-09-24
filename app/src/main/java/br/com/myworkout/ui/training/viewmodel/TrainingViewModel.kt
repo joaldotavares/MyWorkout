@@ -25,6 +25,24 @@ class TrainingViewModel(
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
 
+    fun finishTraining() {
+        viewModelScope.launch {
+            _trainingViewModel.postValue(StateLoading())
+            val response = repository.getTrainingData()
+            response?.exercises?.forEach {
+                repository.updateExercise(
+                    id = it.id,
+                    name = it.name,
+                    series = it.series,
+                    repetitions = it.repetitions,
+                    load = it.load,
+                    type = it.type,
+                    isChecked = false
+                )
+            }
+        }
+    }
+
     fun manageTraining(
         id: String,
         name: String,

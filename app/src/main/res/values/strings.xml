@@ -26,6 +26,7 @@
     <string name="training_fragment_delete_exercise_message">Deseja apagar seu exercício?</string>
     <string name="training_fragment_delete_exercise_confirm">Confirmar</string>
     <string name="training_fragment_delete_exercise_cancel">Cancelar</string>
+    <string name="training_fragment_delete_exercise_confirme_snack">Exercício excluído</string>
     <string name="training_fragment_add_exercise">+</string>
     <string name="error_fragment_text">Ops, algo saiu do controle.</string>
     <string name="error_fragment_subtitle">Estamos trabalhando para solucioná-lo!</string>

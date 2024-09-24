@@ -48,6 +48,7 @@
                     android:layout_height="wrap_content"
                     android:background="@android:color/transparent"
                     android:fontFamily="sans-serif-black"
+                    android:inputType="textCapWords"
                     android:gravity="center"
                     android:text="@{exercise.name}"
                     android:textColor="@color/black"

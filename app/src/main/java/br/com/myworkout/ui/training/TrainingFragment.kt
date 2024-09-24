@@ -2,13 +2,12 @@ package br.com.myworkout.ui.training
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
+import android.widget.Button
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
@@ -17,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
 import br.com.myworkout.commons.extensions.nonNullObserver
+import br.com.myworkout.commons.extensions.showSnackBar
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.databinding.TrainingFragmentBinding
 import br.com.myworkout.ui.state.StateError
@@ -26,6 +26,7 @@ import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import com.google.android.material.snackbar.Snackbar
 
 class TrainingFragment : Fragment() {
 
@@ -42,6 +43,7 @@ class TrainingFragment : Fragment() {
     private lateinit var fourthButtonGroup: MaterialButton
     private lateinit var addButtonGroup: MaterialButton
     private lateinit var groupButton: MaterialButtonToggleGroup
+    private lateinit var finishTrainingButton: Button
 
     private lateinit var binding: TrainingFragmentBinding
 
@@ -63,12 +65,15 @@ class TrainingFragment : Fragment() {
             firstButtonGroup.id -> {
                 getSpecify(firstButtonGroup.text.toString())
             }
+
             secondButtonGroup.id -> {
                 getSpecify(secondButtonGroup.text.toString())
             }
+
             thirdButtonGroup.id -> {
                 getSpecify(thirdButtonGroup.text.toString())
             }
+
             fourthButtonGroup.id -> {
                 getSpecify(fourthButtonGroup.text.toString())
             }
@@ -94,6 +99,12 @@ class TrainingFragment : Fragment() {
                 is StateError -> sendToPageError()
             }
         }
+
+        finishTrainingButton.setOnClickListener {
+            viewModel.finishTraining()
+            requireView().requestFocus()
+            onResume()
+        }
     }
 
     private fun setUpButtonGroupAction() {
@@ -118,6 +129,7 @@ class TrainingFragment : Fragment() {
         fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
         addButtonGroup = view.findViewById(R.id.button_table_group_add)
         groupButton = view.findViewById(R.id.table_group_buttons)
+        finishTrainingButton = view.findViewById(R.id.training_fragment_finish_button)
     }
 
     private fun sendToPageError() {
@@ -129,12 +141,6 @@ class TrainingFragment : Fragment() {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
-        Log.i("ID SELECIONADO", "${groupButton.checkedButtonId}")
-        Log.i("ID PRIMEIRO","${firstButtonGroup.id}")
-        Log.i("ID SEGUNDO","${secondButtonGroup.id}")
-        Log.i("ID TERCEIRO","${thirdButtonGroup.id}")
-        Log.i("ID QUARTO","${fourthButtonGroup.id}")
-
         configureAdapter(data)
     }
 
@@ -175,6 +181,7 @@ class TrainingFragment : Fragment() {
         builder.setMessage(requireContext().getString(R.string.training_fragment_delete_exercise_message))
             .setPositiveButton(requireActivity().getString(R.string.training_fragment_delete_exercise_confirm)) { _, _ ->
                 adapter.removeExerciseOnPosition(viewHolder.bindingAdapterPosition)
+                requireContext().showSnackBar(binding.root, R.string.training_fragment_delete_exercise_confirme_snack)
             }
             .setNegativeButton(requireActivity().getString(R.string.training_fragment_delete_exercise_cancel)) { _, _ ->
                 adapter.notifyItemChanged(viewHolder.bindingAdapterPosition)
