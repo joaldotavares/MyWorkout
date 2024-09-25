@@ -14,7 +14,6 @@ import br.com.myworkout.ui.state.StateResponse
 import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.INSERT
 import kotlinx.coroutines.launch
-import java.lang.Thread.State
 
 class TrainingViewModel(
     private val repository: TrainingRepository
@@ -26,6 +25,24 @@ class TrainingViewModel(
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
 
+    fun finishTraining() {
+        viewModelScope.launch {
+            _trainingViewModel.postValue(StateLoading())
+            val response = repository.getTrainingData()
+            response?.exercises?.forEach {
+                repository.updateExercise(
+                    id = it.id,
+                    name = it.name,
+                    series = it.series,
+                    repetitions = it.repetitions,
+                    load = it.load,
+                    type = it.type,
+                    isChecked = false
+                )
+            }
+        }
+    }
+
     fun manageTraining(
         id: String,
         name: String,
@@ -34,7 +51,8 @@ class TrainingViewModel(
         load: String,
         type: String,
         image: String? = null,
-        state: String
+        isCheck: Boolean,
+        state: String?
     ) {
         val exercise = Exercise(
             id = id,
@@ -42,13 +60,22 @@ class TrainingViewModel(
             series = series,
             repetitions = repetitions,
             load = load,
-            type = type
+            type = type,
+            check = isCheck
         )
         if (state == INSERT) {
             repository.insertExercise(exercise)
             _observerState.value = StateAction.Update
         } else {
-            repository.updateExercise(id, name, series, repetitions, load, type)
+            repository.updateExercise(
+                id = exercise.id,
+                name = exercise.name,
+                series = exercise.series,
+                repetitions = exercise.repetitions,
+                load = exercise.load,
+                type = exercise.type,
+                isChecked = exercise.check
+            )
             _observerState.value = StateAction.Insert
         }
     }
@@ -58,7 +85,7 @@ class TrainingViewModel(
             try {
                 repository.deleteExercise(exercise)
                 _observerState.value = StateAction.Delete
-            } catch (e: Exception) {
+            } catch (_: Exception) {
             }
         }
     }

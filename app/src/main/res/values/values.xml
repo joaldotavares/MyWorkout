@@ -10,16 +10,17 @@
     <dimen name="default_56dp">56dp</dimen>
     <dimen name="default_112dp">112dp</dimen>
 
-
+    <dimen name="default_12sp">12sp</dimen>
     <dimen name="default_14sp">14sp</dimen>
     <dimen name="default_16sp">16sp</dimen>
     <dimen name="default_18sp">18sp</dimen>
     <dimen name="default_20sp">20sp</dimen>
     <dimen name="default_22sp">22sp</dimen>
+    <dimen name="default_26sp">26sp</dimen>
     <dimen name="default_30sp">30sp</dimen>
     <dimen name="default_32sp">32sp</dimen>
 
-    <string-array name="planets_array">
+    <string-array name="type_trainigns">
         <item>A</item>
         <item>B</item>
         <item>C</item>

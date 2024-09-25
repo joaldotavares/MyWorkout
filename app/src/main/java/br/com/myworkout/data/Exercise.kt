@@ -9,5 +9,6 @@ data class Exercise(
     var repetitions: String,
     var load: String,
     var type: String,
+    var check: Boolean,
     var image: String? = null
 ): Serializable
