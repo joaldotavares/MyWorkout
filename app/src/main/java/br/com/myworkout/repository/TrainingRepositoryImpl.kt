@@ -20,7 +20,8 @@ class TrainingRepositoryImpl(
         repetitions: String,
         load: String,
         type: String,
-        image: String?
+        image: String?,
+        isChecked: Boolean
     ) {
         dataSource.updateExercisesSP(
             id = id,
@@ -29,7 +30,8 @@ class TrainingRepositoryImpl(
             repetitions = repetitions,
             load = load,
             type = type,
-            image = image
+            image = image,
+            isChecked = isChecked
         )
     }
 

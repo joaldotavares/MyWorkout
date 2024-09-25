@@ -8,13 +8,13 @@ import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.Spinner
-import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import br.com.myworkout.R
 import br.com.myworkout.commons.extensions.nonNullObserver
+import br.com.myworkout.commons.extensions.showSnackBar
 import br.com.myworkout.data.Exercise
 import br.com.myworkout.databinding.ManageTrainingFragmentBinding
 import br.com.myworkout.ui.state.StateAction
@@ -77,7 +77,8 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 repetitions = repetitions.text.toString(),
                 load = load.text.toString(),
                 type = type,
-                state = setType(exercise?.id)
+                state = setState(exercise?.id),
+                isCheck = false
             )
             observerState()
             findNavController().popBackStack()
@@ -109,30 +110,30 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
         }
     }
 
-    private fun setType(id: String?): String {
+    private fun setState(id: String?): String {
         return if (id == null) INSERT else UPDATE
     }
 
     private fun observerState() {
         viewModel.observerState.nonNullObserver(viewLifecycleOwner) {
             when (it) {
-                is StateAction.Update -> Toast.makeText(
-                    requireContext(),
-                    requireContext().getString(R.string.manage_fragment_exercise_create),
-                    Toast.LENGTH_LONG
-                ).show()
+                is StateAction.Update ->
+                    requireContext().showSnackBar(
+                        binding.root,
+                        R.string.manage_fragment_exercise_create
+                    )
 
-                is StateAction.Insert -> Toast.makeText(
-                    requireContext(),
-                    requireContext().getString(R.string.manage_fragment_exercise_update),
-                    Toast.LENGTH_LONG
-                ).show()
+                is StateAction.Insert ->
+                    requireContext().showSnackBar(
+                        binding.root,
+                        R.string.manage_fragment_exercise_update
+                    )
 
-                is StateAction.Delete -> Toast.makeText(
-                    requireContext(),
-                    requireContext().getString(R.string.manage_fragment_exercise_delete),
-                    Toast.LENGTH_LONG
-                ).show()
+                is StateAction.Delete ->
+                    requireContext().showSnackBar(
+                        binding.root,
+                        R.string.manage_fragment_exercise_delete
+                    )
             }
         }
     }

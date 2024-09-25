@@ -12,7 +12,8 @@ interface TrainingDataSource {
         repetitions: String,
         load: String,
         type: String,
-        image: String?
+        image: String?,
+        isChecked: Boolean
     )
 
     fun <T> save(key: String, data: T)

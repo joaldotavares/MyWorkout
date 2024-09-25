@@ -1,0 +1,104 @@
+private val exerciseList = TrainingData(
+        exercises = mutableListOf(
+            Exercise(
+                id = "1",
+                name = "Supino Reto",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "2",
+                name = "Supino Inclinado",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "3",
+                name = "Crucifixo Inclinado",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "4",
+                name = "Voador",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "5",
+                name = "Articulado",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "6",
+                name = "Triceps Corda",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "7",
+                name = "Triceps Pulley",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "8",
+                name = "Triceps no aparaelho",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "A",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "9",
+                name = "Rosca Direta",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "B",
+                image = "xxxx",
+                check = false
+            ),
+            Exercise(
+                id = "10",
+                name = "Rosca Direta",
+                series = "3",
+                repetitions = "12 a 15",
+                load = "15",
+                type = "B",
+                image = "xxxx",
+                check = false
+            )
+        )
+    )
