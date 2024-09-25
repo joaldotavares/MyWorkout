@@ -61,6 +61,10 @@ class TrainingFragment : Fragment() {
 
     override fun onResume() {
         super.onResume()
+        setSelectedButton()
+    }
+
+    private fun setSelectedButton() {
         when (groupButton.checkedButtonId) {
             firstButtonGroup.id -> {
                 getSpecify(firstButtonGroup.text.toString())
@@ -141,12 +145,16 @@ class TrainingFragment : Fragment() {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
+        setVisibleButton(data)
+        configureAdapter(data)
+    }
+
+    private fun setVisibleButton(data: TrainingData) {
         if (data.exercises.size < 1) {
             finishTrainingButton.visibility = GONE
         } else {
             finishTrainingButton.visibility = VISIBLE
         }
-        configureAdapter(data)
     }
 
     private fun setUpLoading() {
