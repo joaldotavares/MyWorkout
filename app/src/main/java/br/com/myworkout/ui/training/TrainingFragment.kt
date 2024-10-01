@@ -3,12 +3,17 @@ package br.com.myworkout.ui.training
 import android.app.AlertDialog
 import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.ItemTouchHelper
@@ -22,13 +27,13 @@ import br.com.myworkout.databinding.TrainingFragmentBinding
 import br.com.myworkout.ui.state.StateError
 import br.com.myworkout.ui.state.StateLoading
 import br.com.myworkout.ui.state.StateSuccess
+import br.com.myworkout.ui.training.adapter.TrainingAdapter
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
-import com.google.android.material.snackbar.Snackbar
 
-class TrainingFragment : Fragment() {
+class TrainingFragment : Fragment(), MenuProvider {
 
     private val viewModel: TrainingViewModel by lazy {
         ViewModelProvider(
@@ -41,7 +46,6 @@ class TrainingFragment : Fragment() {
     private lateinit var secondButtonGroup: MaterialButton
     private lateinit var thirdButtonGroup: MaterialButton
     private lateinit var fourthButtonGroup: MaterialButton
-    private lateinit var addButtonGroup: MaterialButton
     private lateinit var groupButton: MaterialButtonToggleGroup
     private lateinit var finishTrainingButton: Button
 
@@ -57,6 +61,46 @@ class TrainingFragment : Fragment() {
         binding = TrainingFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+        setUpViews(view)
+
+        setUpButtonGroupAction()
+
+        viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
+            when (it) {
+                is StateLoading -> setUpLoading()
+                is StateSuccess -> it.data?.let { it1 -> setUpSuccess(it1) }
+                is StateError -> sendToPageError()
+            }
+        }
+
+        finishTrainingButton.setOnClickListener {
+            viewModel.finishTraining()
+            requireView().requestFocus()
+            onResume()
+        }
+    }
+
+    override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+        menuInflater.inflate(R.menu.menu_items, menu)
+    }
+
+    override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+        return when (menuItem.itemId) {
+            R.id.add_exercise_menu_item -> {
+                val directions =
+                    TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
+                findNavController().navigate(directions)
+                true
+            }
+
+            else -> false
+        }
     }
 
     override fun onResume() {
@@ -88,29 +132,6 @@ class TrainingFragment : Fragment() {
         viewModel.getSpecifyTraining(type)
     }
 
-
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        setUpViews(view)
-
-        setUpButtonGroupAction()
-
-        viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
-            when (it) {
-                is StateLoading -> setUpLoading()
-                is StateSuccess -> it.data?.let { it1 -> setUpSuccess(it1) }
-                is StateError -> sendToPageError()
-            }
-        }
-
-        finishTrainingButton.setOnClickListener {
-            viewModel.finishTraining()
-            requireView().requestFocus()
-            onResume()
-        }
-    }
-
     private fun setUpButtonGroupAction() {
         firstButtonGroup.setOnClickListener {
             viewModel.getSpecifyTraining(firstButtonGroup.text.toString())
@@ -131,7 +152,6 @@ class TrainingFragment : Fragment() {
         secondButtonGroup = view.findViewById(R.id.button_table_group_second)
         thirdButtonGroup = view.findViewById(R.id.button_table_group_third)
         fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
-        addButtonGroup = view.findViewById(R.id.button_table_group_add)
         groupButton = view.findViewById(R.id.table_group_buttons)
         finishTrainingButton = view.findViewById(R.id.training_fragment_finish_button)
     }
@@ -172,7 +192,6 @@ class TrainingFragment : Fragment() {
 
         setUpSwipeToDeleteExercise()
         setEditClickAdapter()
-        setAddButton()
         setExerciseItemClicked()
     }
 
@@ -210,14 +229,6 @@ class TrainingFragment : Fragment() {
         adapter.onItemClickListener = { it ->
             val directions =
                 TrainingFragmentDirections.actionTrainingFragmentToDetailsExerciseFragment(it)
-            findNavController().navigate(directions)
-        }
-    }
-
-    private fun setAddButton() {
-        addButtonGroup.setOnClickListener {
-            val directions =
-                TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
             findNavController().navigate(directions)
         }
     }

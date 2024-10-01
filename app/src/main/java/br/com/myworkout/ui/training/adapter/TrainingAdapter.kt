@@ -1,4 +1,4 @@
-package br.com.myworkout.ui.training
+package br.com.myworkout.ui.training.adapter
 
 import android.view.LayoutInflater
 import android.view.View

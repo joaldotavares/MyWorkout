@@ -62,13 +62,6 @@
                 android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:text="@string/training_fragment_type_d" />
-
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/button_table_group_add"
-                style="?attr/materialButtonOutlinedStyle"
-                android:layout_width="75dp"
-                android:layout_height="wrap_content"
-                android:text="@string/training_fragment_add_exercise" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
         <ScrollView
