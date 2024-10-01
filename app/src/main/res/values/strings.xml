@@ -30,4 +30,5 @@
     <string name="training_fragment_add_exercise">+</string>
     <string name="error_fragment_text">Ops, algo saiu do controle.</string>
     <string name="error_fragment_subtitle">Estamos trabalhando para solucioná-lo!</string>
+    <string name="menu_item_add_title">Adicionar</string>
 </resources>
