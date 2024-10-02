@@ -12,6 +12,7 @@ import br.com.myworkout.data.Exercise
 import br.com.myworkout.databinding.ExercisesItemBinding
 import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.UPDATE
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
+import com.bumptech.glide.Glide
 
 class TrainingAdapter(
     private val exercises: MutableList<Exercise>,
@@ -55,7 +56,6 @@ class TrainingAdapter(
         holder.repetitions.text = training.repetitions
         holder.load.text = training.load
         holder.check.isChecked = training.check
-
 
         holder.check.setOnCheckedChangeListener { _, isChecked ->
             viewModel.manageTraining(

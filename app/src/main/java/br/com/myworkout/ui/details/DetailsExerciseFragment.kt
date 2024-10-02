@@ -31,8 +31,7 @@ class DetailsExerciseFragment : Fragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-
+    ): View {
         binding = DetailsExerciseFragmentBinding.inflate(inflater, container, false)
         binding.lifecycleOwner = this
         return binding.root
