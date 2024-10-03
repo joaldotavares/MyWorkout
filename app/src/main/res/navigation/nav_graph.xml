@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_trainingFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
+        <action
+            android:id="@+id/action_trainingFragment_to_selectExerciseFragment"
+            app:destination="@id/selectExerciseFragment" />
     </fragment>
     <fragment
         android:id="@+id/manageTrainingFragment"
@@ -40,4 +43,8 @@
         android:id="@+id/errorFragment"
         android:name="br.com.myworkout.ui.training.ErrorFragment"
         android:label="Desculpe" />
+    <fragment
+        android:id="@+id/selectExerciseFragment"
+        android:name="br.com.myworkout.ui.select.SelectExerciseFragment"
+        android:label="SelectExerciseFragment" />
 </navigation>

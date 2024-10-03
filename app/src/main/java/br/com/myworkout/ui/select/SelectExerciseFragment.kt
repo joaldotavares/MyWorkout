@@ -32,6 +32,8 @@ class SelectExerciseFragment: Fragment() {
     }
 
     private fun configureAdapter() {
-        binding.selectExerciseFragmentRecyclerView.layoutManager = GridLayoutManager(requireContext(),2)
+        binding.selectExerciseFragmentRecyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
+        adapter = SelectExerciseAdapter(mutableListOf())
+        binding.selectExerciseFragmentRecyclerView.adapter = adapter
     }
 }
