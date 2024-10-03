@@ -16,17 +16,16 @@
 
         <ImageView
             android:id="@+id/details_training_image"
-            android:layout_width="0dp"
-            android:layout_height="350dp"
-            android:layout_margin="@dimen/default_20dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/border_image"
-            android:contentDescription="@string/details_exercise_fragment_image_description"
-            android:elevation="2dp"
-            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="250dp"
+            app:imgUrl="@{exercise.image}"
+            tools:src="@mipmap/ic_launcher_round"
+            android:scaleType="centerCrop"
+            android:layout_margin="@dimen/default_10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            android:contentDescription="@string/details_exercise_fragment_image_description" />
 
         <TextView
             android:id="@+id/details_name"
@@ -43,17 +42,18 @@
 
         <TextView
             android:id="@+id/details_exercises_name"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/default_20dp"
             android:layout_marginTop="@dimen/default_56dp"
             android:layout_marginEnd="@dimen/default_20dp"
             android:background="@android:color/transparent"
             android:fontFamily="sans-serif-black"
-            android:gravity="center"
             android:text="@{exercise.name}"
+            android:textAlignment="textStart"
             android:textColor="@color/black"
             android:textSize="@dimen/default_22sp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@+id/details_name"
             app:layout_constraintTop_toBottomOf="@id/details_training_image"
             tools:text="Nome do exercicio" />
