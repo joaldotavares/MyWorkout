@@ -33,6 +33,7 @@ import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 
+
 class TrainingFragment : Fragment(), MenuProvider {
 
     private val viewModel: TrainingViewModel by lazy {
@@ -66,7 +67,6 @@ class TrainingFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
-
         setUpViews(view)
 
         setUpButtonGroupAction()
@@ -94,7 +94,8 @@ class TrainingFragment : Fragment(), MenuProvider {
         return when (menuItem.itemId) {
             R.id.add_exercise_menu_item -> {
                 val directions =
-                    TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
+                    TrainingFragmentDirections.actionTrainingFragmentToSelectExerciseFragment()
+                    //TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
                 findNavController().navigate(directions)
                 true
             }

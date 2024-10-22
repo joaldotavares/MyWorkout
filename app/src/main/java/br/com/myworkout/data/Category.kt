@@ -4,5 +4,6 @@ import java.io.Serializable
 
 data class Category(
     val name: String,
-    val exercises: MutableList<Exercise>
+    val exercises: List<Exercise>,
+    val urlToImage: String
 ): Serializable

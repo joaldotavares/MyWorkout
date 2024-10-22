@@ -45,6 +45,5 @@
         android:label="Desculpe" />
     <fragment
         android:id="@+id/selectExerciseFragment"
-        android:name="br.com.myworkout.ui.select.SelectExerciseFragment"
-        android:label="SelectExerciseFragment" />
+        android:name="br.com.myworkout.ui.select.SelectExerciseFragment" />
 </navigation>
