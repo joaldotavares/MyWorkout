@@ -7,3 +7,7 @@ data class Category(
     val exercises: List<Exercise>,
     val urlToImage: String
 ): Serializable
+
+data class SelectExercise(
+    val lista: List<Category>
+): Serializable

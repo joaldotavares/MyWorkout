@@ -1,7 +1,7 @@
 package br.com.myworkout.repository
 
-import br.com.myworkout.data.Category
+import br.com.myworkout.data.SelectExercise
 
 interface CategoryRepository {
-    fun getCategories(): Category
+    fun getCategories(): SelectExercise
 }

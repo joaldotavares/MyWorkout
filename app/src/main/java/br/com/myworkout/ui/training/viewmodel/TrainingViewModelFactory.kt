@@ -9,6 +9,7 @@ import br.com.myworkout.repository.TrainingRepositoryImpl
 import br.com.myworkout.repository.source.TrainingDataSourceImpl
 
 class TrainingViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         val dataSource = TrainingDataSourceImpl(context = context)
         val repository = TrainingRepositoryImpl(dataSource)

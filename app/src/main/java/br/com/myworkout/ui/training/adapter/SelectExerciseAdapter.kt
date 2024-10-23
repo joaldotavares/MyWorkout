@@ -36,7 +36,7 @@ class SelectExerciseAdapter(
 
     override fun onBindViewHolder(holder: SelectExerciseViewHolder, position: Int) {
         val category = categories[position]
-
+        binding.category = category
         holder.name.text = category.name
         holder.exercises.text = category.exercises.size.toString()
         Glide.with(holder.itemView.context).load(category.urlToImage).into(holder.image)
@@ -45,6 +45,4 @@ class SelectExerciseAdapter(
             onItemClickListener(category)
         }
     }
-
-
 }
