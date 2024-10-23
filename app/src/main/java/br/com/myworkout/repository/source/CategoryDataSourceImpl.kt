@@ -4,7 +4,7 @@ import android.content.Context
 import android.content.SharedPreferences
 import br.com.myworkout.data.Category
 import br.com.myworkout.data.Exercise
-import br.com.myworkout.data.SelectExercise
+import br.com.myworkout.data.SelectCategory
 import com.google.gson.Gson
 import java.util.UUID
 
@@ -20,14 +20,14 @@ class CategoryDataSourceImpl(
 
     private val gson: Gson = Gson()
 
-    override fun getCategories(): SelectExercise {
+    override fun getCategories(): SelectCategory {
         return gson.fromJson(
             sharedPreferences.getString(CATEGORIES, null),
-            SelectExercise::class.java
+            SelectCategory::class.java
         )
     }
 
-    private val categoryList = SelectExercise(
+    private val categoryList = SelectCategory(
         listOf(
             Category(
                 name = "Peitoral",

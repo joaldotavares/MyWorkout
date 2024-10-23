@@ -45,7 +45,7 @@
         android:label="Desculpe" />
     <fragment
         android:id="@+id/selectExerciseFragment"
-        android:name="br.com.myworkout.ui.select.SelectExerciseFragment" >
+        android:name="br.com.myworkout.ui.select.SelectCategoryFragment" >
         <action
             android:id="@+id/action_selectExerciseFragment_to_errorFragment"
             app:destination="@id/errorFragment" />

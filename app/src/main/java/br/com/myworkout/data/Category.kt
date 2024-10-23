@@ -8,6 +8,6 @@ data class Category(
     val urlToImage: String
 ): Serializable
 
-data class SelectExercise(
+data class SelectCategory(
     val lista: List<Category>
 ): Serializable

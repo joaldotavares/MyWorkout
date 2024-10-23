@@ -7,13 +7,13 @@ import androidx.lifecycle.viewmodel.CreationExtras
 import br.com.myworkout.repository.CategoryRepositoryImpl
 import br.com.myworkout.repository.source.CategoryDataSourceImpl
 
-class SelectExerciseViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+class SelectCategoryViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
 
     override fun <T : ViewModel> create(modelClass: Class<T>, extras: CreationExtras): T {
         val dataSource = CategoryDataSourceImpl(context = context)
         val repository = CategoryRepositoryImpl(dataSource)
-        if (modelClass.isAssignableFrom(SelectExerciseViewModel::class.java)) {
-            return SelectExerciseViewModel(repository) as T
+        if (modelClass.isAssignableFrom(SelectCategoryViewModel::class.java)) {
+            return SelectCategoryViewModel(repository) as T
         } else {
             throw IllegalArgumentException("Unknown ViewModel class")
         }

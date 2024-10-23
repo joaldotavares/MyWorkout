@@ -8,14 +8,14 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
 import br.com.myworkout.data.Category
-import br.com.myworkout.databinding.SelectExerciseItemBinding
+import br.com.myworkout.databinding.SelectCategoryItemBinding
 import com.bumptech.glide.Glide
 
-class SelectExerciseAdapter(
+class SelectCategoryAdapter(
     private val categories: List<Category>
-) : RecyclerView.Adapter<SelectExerciseAdapter.SelectExerciseViewHolder>() {
+) : RecyclerView.Adapter<SelectCategoryAdapter.SelectExerciseViewHolder>() {
 
-    private lateinit var binding: SelectExerciseItemBinding
+    private lateinit var binding: SelectCategoryItemBinding
     var onItemClickListener: (exercise: Category) -> Unit = {}
 
     class SelectExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
@@ -26,7 +26,7 @@ class SelectExerciseAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectExerciseViewHolder {
         binding =
-            SelectExerciseItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+            SelectCategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return SelectExerciseViewHolder(binding.root)
     }
 
