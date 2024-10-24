@@ -39,7 +39,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/supino_reto.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -55,7 +55,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_direta_barra_w.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -66,12 +66,12 @@ class CategoryDataSourceImpl(
                 exercises = listOf(
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Elevação Lateral",
+                        name = "Elevação Frontal com Halter",
                         series = "",
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_halter.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -87,7 +87,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/puxada_alta-frente.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -103,7 +103,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abdominal_maquina.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -119,7 +119,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "xxxx",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_livre_barra.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -130,12 +130,12 @@ class CategoryDataSourceImpl(
                 exercises = listOf(
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Mesa Flexora",
+                        name = "Mesa Flexora Vertical",
                         series = "",
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/mesa_flexora_vertical.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -151,7 +151,7 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/stiff_halters.jpg?raw=true",
                         check = false
                     )
                 ),
@@ -162,12 +162,12 @@ class CategoryDataSourceImpl(
                 exercises = listOf(
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Triceps Pulley",
+                        name = "Triceps Corda",
                         series = "",
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_corda.jpg?raw=true",
                         check = false
                     )
                 ),

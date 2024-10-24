@@ -95,7 +95,6 @@ class TrainingFragment : Fragment(), MenuProvider {
             R.id.add_exercise_menu_item -> {
                 val directions =
                     TrainingFragmentDirections.actionTrainingFragmentToSelectExerciseFragment()
-                    //TrainingFragmentDirections.actionTrainingFragmentToManageTrainingFragment(null)
                 findNavController().navigate(directions)
                 true
             }

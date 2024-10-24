@@ -13,28 +13,28 @@ import com.bumptech.glide.Glide
 
 class SelectCategoryAdapter(
     private val categories: List<Category>
-) : RecyclerView.Adapter<SelectCategoryAdapter.SelectExerciseViewHolder>() {
+) : RecyclerView.Adapter<SelectCategoryAdapter.SelectCategoryViewHolder>() {
 
     private lateinit var binding: SelectCategoryItemBinding
-    var onItemClickListener: (exercise: Category) -> Unit = {}
+    var onItemClickListener: (category: Category) -> Unit = {}
 
-    class SelectExerciseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class SelectCategoryViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val image: ImageView = itemView.findViewById(R.id.select_exercise_item_image)
         val name: TextView = itemView.findViewById(R.id.select_exercise_item_name)
         val exercises: TextView = itemView.findViewById(R.id.select_exercise_item_qtd)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectExerciseViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectCategoryViewHolder {
         binding =
             SelectCategoryItemBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return SelectExerciseViewHolder(binding.root)
+        return SelectCategoryViewHolder(binding.root)
     }
 
     override fun getItemCount(): Int {
         return categories.size
     }
 
-    override fun onBindViewHolder(holder: SelectExerciseViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: SelectCategoryViewHolder, position: Int) {
         val category = categories[position]
         binding.category = category
         holder.name.text = category.name

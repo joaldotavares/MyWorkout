@@ -1,4 +1,4 @@
-package br.com.myworkout.ui.select.viewmodel
+package br.com.myworkout.ui.select.category.viewmodel
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

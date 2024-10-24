@@ -1,4 +1,4 @@
-package br.com.myworkout.ui.select
+package br.com.myworkout.ui.select.category
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -12,8 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.myworkout.commons.extensions.nonNullObserver
 import br.com.myworkout.data.SelectCategory
 import br.com.myworkout.databinding.SelectCategoryFragmentBinding
-import br.com.myworkout.ui.select.viewmodel.SelectCategoryViewModel
-import br.com.myworkout.ui.select.viewmodel.SelectCategoryViewModelFactory
+import br.com.myworkout.ui.select.category.viewmodel.SelectCategoryViewModel
+import br.com.myworkout.ui.select.category.viewmodel.SelectCategoryViewModelFactory
 import br.com.myworkout.ui.state.StateError
 import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.adapter.SelectCategoryAdapter
@@ -72,7 +72,9 @@ class SelectCategoryFragment : Fragment() {
         binding.selectExerciseFragmentRecyclerView.adapter = adapter
 
         adapter.onItemClickListener = {
-            Toast.makeText(requireContext(), it.urlToImage, Toast.LENGTH_LONG).show()
+            val directions =
+                SelectCategoryFragmentDirections.actionSelectExerciseFragmentToSelectExerciseFragment2(it)
+            findNavController().navigate(directions)
         }
     }
 }

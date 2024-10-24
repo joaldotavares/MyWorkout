@@ -78,6 +78,7 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
                 load = load.text.toString(),
                 type = type,
                 state = setState(exercise?.id),
+                image = exercise?.image,
                 isCheck = false
             )
             observerState()
@@ -111,7 +112,13 @@ class ManageTrainingFragment : Fragment(), AdapterView.OnItemSelectedListener {
     }
 
     private fun setState(id: String?): String {
-        return if (id == null) INSERT else UPDATE
+        if (id == null || exercise?.type.isNullOrEmpty()) {
+            findNavController().popBackStack(R.id.selectExerciseFragment, false)
+            findNavController().popBackStack(R.id.selectCategoryFragment, false)
+            return INSERT
+        } else {
+            return UPDATE
+        }
     }
 
     private fun observerState() {
