@@ -61,6 +61,7 @@ class TrainingViewModel(
             repetitions = repetitions,
             load = load,
             type = type,
+            image = image,
             check = isCheck
         )
         if (state == INSERT) {
