@@ -9,11 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import br.com.myworkout.data.Exercise
-import br.com.myworkout.databinding.SelectCategoryFragmentBinding
 import br.com.myworkout.databinding.SelectExerciseFragmentBinding
 import br.com.myworkout.ui.training.adapter.SelectExerciseAdapter
 
-class SelectExerciseFragment: Fragment() {
+class SelectExerciseFragment : Fragment() {
 
     private lateinit var binding: SelectExerciseFragmentBinding
     private lateinit var adapter: SelectExerciseAdapter
@@ -31,6 +30,7 @@ class SelectExerciseFragment: Fragment() {
         }
         type = args.category.name
     }
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -57,7 +57,9 @@ class SelectExerciseFragment: Fragment() {
 
         adapter.onItemClickListener = {
             val directions =
-                SelectExerciseFragmentDirections.actionSelectExerciseFragmentToManageTrainingFragment(it)
+                SelectExerciseFragmentDirections.actionSelectExerciseFragmentToManageTrainingFragment(
+                    it
+                )
             findNavController().navigate(directions)
         }
 
