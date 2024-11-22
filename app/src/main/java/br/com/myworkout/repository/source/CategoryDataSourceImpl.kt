@@ -102,6 +102,56 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/crucifixo_reto_com_halter.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Crossover na Polia Alta",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/crossover_polia_alta.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Flexão de Braço",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/flexao_braco.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Pullover com Halter",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/pullover_com_halter.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Crossover na Polia Baixa",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/crossover_na_polia_baixa.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Supino Vertical Articulado",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/supino_vertical_articulado.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/chest_category.jpg?raw=true"
             ),
@@ -148,6 +198,66 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_scott.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Martelo no Scott",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_martelo_scott.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Scott Unilateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_scott_unilateral.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Alternada Inclinado",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_alternada_inclinada.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Martelo no Banco",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_martelo_banco.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Biceps na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_biceps_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Martelo Unilateral no Scott",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_martelo_unilateral_scott.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/biceps_category.jpg?raw=true"
             ),
@@ -164,7 +274,6 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_com_halter.jpg?raw=true",
                         check = false
                     ),
-
                     Exercise(
                         id = UUID.randomUUID().toString(),
                         name = "Remada Alta com Halter",
@@ -174,8 +283,48 @@ class CategoryDataSourceImpl(
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_alta_halter.jpg?raw=true",
                         check = false
-                    )
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Crucifixo Invertido",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/crucifixo_invertido.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Alta na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_alta_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Manguito Rotador",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/manguito_rotador.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Elevação Frontal com Anilha",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_com_anilha.jpg?raw=true",
+                        check = false
+                    ),
+                ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/deltoid_category.jpg?raw=true"
             ),
             Category(
@@ -219,6 +368,76 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_curvada_unilateral.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Puxada Alta Unilateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/puxada_unilateral.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Inclinada no Banco com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_inclinada_no_banco_com_halters.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Barra Fixa Pull Up",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/barra_fixa_pull_up.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Curva com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_curvada_com_barra.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Curva com Barra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_curvada_com_halter.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Voador Dorsal",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/voador_dorsal.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Puxada Articulada",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/puxada_articulada.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -324,7 +543,8 @@ class CategoryDataSourceImpl(
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/stiff_halters.jpg?raw=true",
                         check = false
-                    ),Exercise(
+                    ),
+                    Exercise(
                         id = UUID.randomUUID().toString(),
                         name = "Elevação Pélvica",
                         series = "",
@@ -332,6 +552,16 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_pelvica.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Abdução de Quadril na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abducao_de_quadril_na_polia.jpg?raw=truee",
                         check = false
                     ),
                 ),
@@ -362,7 +592,7 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Extensão de Triceps no Banco com Halter",
+                        name = "Extensão de Triceps Deitado com Halter",
                         series = "",
                         repetitions = "",
                         load = "",
@@ -380,9 +610,45 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_francesa_cross.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Extensão de Triceps Deitado com Barra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/extens%C3%A3o_triceps_deitado.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Mergulho Profundo com Aparelho",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_mergulho_profundo_com_aparelho.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/triceps_category.jpg?raw=true"
             ),
+            Category(
+                name = "Antebraço",
+                exercises = listOf(
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca de Punho",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_de_punho.jpg?raw=true",
+                        check = false
+                    ),
+                ),
+                urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/antebrachial_category.jpg?raw=true"
+            )
         )
     )
 

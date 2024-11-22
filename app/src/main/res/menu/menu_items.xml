@@ -5,6 +5,7 @@
     <item
         android:id="@+id/add_exercise_menu_item"
         app:showAsAction="always"
+        android:clickable="true"
         android:icon="@drawable/add_exercise_icon"
         android:title="@string/menu_item_add_title" />
 
