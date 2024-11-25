@@ -324,6 +324,16 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_com_anilha.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Elevação Frontal Unilateral com Halter",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_unilateral_com_halter.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/deltoid_category.jpg?raw=true"
             ),
@@ -402,7 +412,7 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Remada Curva com Halters",
+                        name = "Remada Curva com Barra",
                         series = "",
                         repetitions = "",
                         load = "",
@@ -412,7 +422,7 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Remada Curva com Barra",
+                        name = "Remada Curva com Halters",
                         series = "",
                         repetitions = "",
                         load = "",
@@ -455,7 +465,27 @@ class CategoryDataSourceImpl(
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abdominal_maquina.jpg?raw=true",
                         check = false
-                    )
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Abdominal Oblíquo com Anilha",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abdominal_oblicuo_com_anilha.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Abdominal Livre",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abdonimal_livre.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/abs_category.jpg?raw=true"
             ),
@@ -502,6 +532,46 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_no_smith.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Agachamento com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_com_halter.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Agachamento Sumo com Barra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_sumo_com_barra.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Cadeira Extensora",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_extensora.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Cadeira Extensora Unilateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_extensora_unilateral.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/quadriceps_category.jpg?raw=true"
             ),
@@ -526,6 +596,26 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/panturrilha_em_pe_na_maquina.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Cadeira Abdutora",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_abdutora.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Cadeira Adutora",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_adutora.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -561,7 +651,27 @@ class CategoryDataSourceImpl(
                         repetitions = "",
                         load = "",
                         type = "",
-                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abducao_de_quadril_na_polia.jpg?raw=truee",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abducao_de_quadril_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Agachamento Terra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_terra.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Coice na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/coice_na_polia.jpg?raw=true",
                         check = false
                     ),
                 ),
