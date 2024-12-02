@@ -33,8 +33,12 @@ import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.adapter.TrainingAdapter
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
+import com.applandeo.materialcalendarview.CalendarView
+import com.applandeo.materialcalendarview.EventDay
+import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import java.util.Calendar
 
 
 class TrainingFragment : Fragment(), MenuProvider {
@@ -52,6 +56,8 @@ class TrainingFragment : Fragment(), MenuProvider {
     private lateinit var fourthButtonGroup: MaterialButton
     private lateinit var groupButton: MaterialButtonToggleGroup
     private lateinit var finishTrainingButton: Button
+
+    private lateinit var calendar: CalendarView
 
     private lateinit var binding: TrainingFragmentBinding
 
@@ -73,6 +79,11 @@ class TrainingFragment : Fragment(), MenuProvider {
         setUpViews(view)
 
         setUpButtonGroupAction()
+
+        //calendar.setOnCalendarDayClickListener()
+        val lista = mutableListOf(EventDay(Calendar.getInstance()))
+
+        calendar.setEvents(lista)
 
         viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
             when (it) {
@@ -157,6 +168,8 @@ class TrainingFragment : Fragment(), MenuProvider {
         fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
         groupButton = view.findViewById(R.id.table_group_buttons)
         finishTrainingButton = view.findViewById(R.id.training_fragment_finish_button)
+        calendar = view.findViewById(R.id.training_fragment_calendar)
+        finishTrainingButton.visibility = GONE
     }
 
     private fun sendToPageError() {
@@ -168,6 +181,7 @@ class TrainingFragment : Fragment(), MenuProvider {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
+        calendar.visibility = GONE
         setVisibleButton(data)
         configureAdapter(data)
     }

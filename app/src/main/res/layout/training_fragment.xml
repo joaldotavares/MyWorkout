@@ -64,6 +64,14 @@
                 android:text="@string/training_fragment_type_d" />
         </com.google.android.material.button.MaterialButtonToggleGroup>
 
+        <com.applandeo.materialcalendarview.CalendarView
+            android:id="@+id/training_fragment_calendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:elevation="@dimen/default_2dp"
+            app:headerColor="#E36E6E"
+            app:layout_constraintTop_toBottomOf="@id/table_group_buttons"/>
+
         <ScrollView
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -83,6 +91,7 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/fragment_training_recycler_view"
                 android:layout_width="match_parent"
+                android:visibility="gone"
                 android:layout_height="0dp"
                 android:clickable="true"
                 app:layout_constraintEnd_toEndOf="parent"

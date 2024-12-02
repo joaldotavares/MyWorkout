@@ -152,6 +152,16 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/supino_vertical_articulado.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Pullover",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/pullover.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/chest_category.jpg?raw=true"
             ),
@@ -258,6 +268,16 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_martelo_unilateral_scott.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca na Polia com Corda",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/biceps_polia_com_corda.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/biceps_category.jpg?raw=true"
             ),
@@ -334,6 +354,16 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_frontal_unilateral_com_halter.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Encolhimento de Ombro com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/encolhimento_de_ombros_com_halter.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/deltoid_category.jpg?raw=true"
             ),
@@ -348,6 +378,16 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/puxada_alta-frente.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Curvada na Polia Baixa",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada-curvada-supinada-polia-baixa.jpg?raw=true",
                         check = false
                     ),
                     Exercise(
@@ -450,6 +490,26 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/puxada_articulada.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Depressão Sagital",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/depressao_sagital.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada com Corda na Polia Alta",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_com_corda_polia.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/back_category.jpg?raw=true"
             ),
@@ -484,6 +544,26 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abdonimal_livre.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha com Elevação de Pernas",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_com_elevacao_de_pernas.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha Tocando os Ombros",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_tocando_ombros.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -738,6 +818,36 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_mergulho_profundo_com_aparelho.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps Coice Unilateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_coice_unilatel.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps Unilateral na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_frances_unilateral.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps Francês Unilateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_unilateral_polia.jpg?raw=true",
                         check = false
                     ),
                 ),
