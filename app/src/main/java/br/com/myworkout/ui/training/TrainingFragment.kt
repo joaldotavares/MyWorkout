@@ -2,9 +2,6 @@ package br.com.myworkout.ui.training
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -14,6 +11,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -23,6 +21,7 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
+import br.com.myworkout.commons.extensions.midnightCalendar
 import br.com.myworkout.commons.extensions.nonNullObserver
 import br.com.myworkout.commons.extensions.showSnackBar
 import br.com.myworkout.data.TrainingData
@@ -33,9 +32,10 @@ import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.adapter.TrainingAdapter
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
+import com.applandeo.materialcalendarview.CalendarDay
 import com.applandeo.materialcalendarview.CalendarView
 import com.applandeo.materialcalendarview.EventDay
-import com.applandeo.materialcalendarview.listeners.OnCalendarDayClickListener
+import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import java.util.Calendar
@@ -57,11 +57,15 @@ class TrainingFragment : Fragment(), MenuProvider {
     private lateinit var groupButton: MaterialButtonToggleGroup
     private lateinit var finishTrainingButton: Button
 
-    private lateinit var calendar: CalendarView
+    private lateinit var calendarView: CalendarView
 
     private lateinit var binding: TrainingFragmentBinding
 
     private lateinit var adapter: TrainingAdapter
+
+    var calendarDays: MutableList<CalendarDay> = ArrayList()
+    var calendar: Calendar = Calendar.getInstance()
+    var calendarDay = CalendarDay(calendar)
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -73,6 +77,15 @@ class TrainingFragment : Fragment(), MenuProvider {
         return binding.root
     }
 
+    private fun getSelectedDays(): List<Calendar> {
+        val calendars: MutableList<Calendar> = ArrayList()
+        for (i in 0..9) {
+            val calendar: Calendar = midnightCalendar
+            calendar.add(Calendar.DAY_OF_MONTH, i)
+            calendars.add(calendar)
+        }
+        return calendars
+    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
@@ -80,10 +93,44 @@ class TrainingFragment : Fragment(), MenuProvider {
 
         setUpButtonGroupAction()
 
-        //calendar.setOnCalendarDayClickListener()
-        val lista = mutableListOf(EventDay(Calendar.getInstance()))
+        calendarView.setOnForwardPageChangeListener(object : OnCalendarPageChangeListener {
+            override fun onChange() {
+                Toast.makeText(
+                    requireContext(),
+                    "Forward",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
 
-        calendar.setEvents(lista)
+        calendarView.setOnPreviousPageChangeListener(object : OnCalendarPageChangeListener {
+            override fun onChange() {
+                Toast.makeText(
+                    requireContext(),
+                    "Previous",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+
+        calendarView.selectedDates = getSelectedDays()
+
+        val events: MutableList<EventDay> = java.util.ArrayList()
+
+        val cal = Calendar.getInstance()
+        cal.add(Calendar.DAY_OF_MONTH, 7)
+        events.add(EventDay(cal, R.drawable.sample_icon))
+
+        calendarView.setEvents(events)
+
+
+//        calendar.set(2024, 11, 11)
+//
+//        calendarDay.imageResource = R.drawable.sample_icon
+//        calendarDays.add(calendarDay)
+//
+//       calendarView.setCalendarDays(calendarDays)
+
 
         viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
             when (it) {
@@ -168,7 +215,7 @@ class TrainingFragment : Fragment(), MenuProvider {
         fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
         groupButton = view.findViewById(R.id.table_group_buttons)
         finishTrainingButton = view.findViewById(R.id.training_fragment_finish_button)
-        calendar = view.findViewById(R.id.training_fragment_calendar)
+        calendarView = view.findViewById(R.id.training_fragment_calendar)
         finishTrainingButton.visibility = GONE
     }
 
@@ -181,7 +228,7 @@ class TrainingFragment : Fragment(), MenuProvider {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
-        calendar.visibility = GONE
+        calendarView.visibility = GONE
         setVisibleButton(data)
         configureAdapter(data)
     }

@@ -190,6 +190,16 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
+                        name = "Rosca Concentrada",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_concentrada.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
                         name = "Rosca Martelo",
                         series = "",
                         repetitions = "",
@@ -270,12 +280,32 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Rosca na Polia com Corda",
+                        name = "Rosca Direta na Polia com Corda",
                         series = "",
                         repetitions = "",
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/biceps_polia_com_corda.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Direta na Polia com Barra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_direta_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca Unilateral na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_unilateral_na_polia.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -336,6 +366,16 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
+                        name = "Desenvvolvimento com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/desenvolvimento_com_halters.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
                         name = "Elevação Frontal com Anilha",
                         series = "",
                         repetitions = "",
@@ -362,6 +402,56 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/encolhimento_de_ombros_com_halter.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Elevação Lateral Unilateral na Polia",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elevacao_lateral_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Desenvolvimento Articulado",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/desenvolvimento_articulado.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Desenvolvimento Sentado com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/desenvolvimento_com_halters_sentado.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Elevação Lateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/elavacao_lateral.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Alta com Barra",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_alta_com_barra.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -510,6 +600,26 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_com_corda_polia.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Articulada",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_articulada.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Remada Baixa com Triângulo",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/remada_baixa_com_triangulo.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/back_category.jpg?raw=true"
             ),
@@ -564,6 +674,56 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_tocando_ombros.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha Cachorrinho Isométrico",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_cachorrinho_isometrica.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Roda Abdominal",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/roda_abdominal.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha Dinâmica",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_dinamica.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha Escalador",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_escalador.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Prancha Lateral",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/prancha_lateral.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -652,6 +812,16 @@ class CategoryDataSourceImpl(
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_extensora_unilateral.jpg?raw=true",
                         check = false
                     ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Agachamento Hack 45 Graus",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/agachamento_hack_45_graus.jpg?raw=true",
+                        check = false
+                    ),
                 ),
                 urlToImage = "https://github.com/joaldotavares/Images/blob/main/categorias/quadriceps_category.jpg?raw=true"
             ),
@@ -696,6 +866,26 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/cadeira_adutora.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Mesa Flexora",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/mesa_flexora.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Panturrilha Sentado",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/gemeos_sentado_na_maquina.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -752,6 +942,16 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/coice_na_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Abdução de Quadril",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/abducao_de_quadril.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -832,7 +1032,7 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Triceps Unilateral na Polia",
+                        name = "Triceps Francês Unilateral",
                         series = "",
                         repetitions = "",
                         load = "",
@@ -842,12 +1042,42 @@ class CategoryDataSourceImpl(
                     ),
                     Exercise(
                         id = UUID.randomUUID().toString(),
-                        name = "Triceps Francês Unilateral",
+                        name = "Triceps Unilateral na Polia",
                         series = "",
                         repetitions = "",
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_unilateral_polia.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps Francês Sentado com Halter",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_frances_sentado_com_halter.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps na Paralela",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_na_paralela.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Triceps Francês Unilateral Sentado",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/triceps_frances_unilateral_sentado.jpg?raw=true",
                         check = false
                     ),
                 ),
@@ -864,6 +1094,16 @@ class CategoryDataSourceImpl(
                         load = "",
                         type = "",
                         image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_de_punho.jpg?raw=true",
+                        check = false
+                    ),
+                    Exercise(
+                        id = UUID.randomUUID().toString(),
+                        name = "Rosca de Punho com Halters",
+                        series = "",
+                        repetitions = "",
+                        load = "",
+                        type = "",
+                        image = "https://github.com/joaldotavares/Images/blob/main/Exercicios/rosca_punho_com_halters.jpg?raw=true",
                         check = false
                     ),
                 ),
