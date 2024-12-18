@@ -11,7 +11,6 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
 import android.widget.Button
-import android.widget.Toast
 import androidx.core.view.MenuProvider
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Lifecycle
@@ -21,9 +20,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
+import br.com.myworkout.commons.Constants
 import br.com.myworkout.commons.extensions.midnightCalendar
 import br.com.myworkout.commons.extensions.nonNullObserver
 import br.com.myworkout.commons.extensions.showSnackBar
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.databinding.TrainingFragmentBinding
 import br.com.myworkout.ui.state.StateError
@@ -32,10 +33,7 @@ import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.adapter.TrainingAdapter
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
-import com.applandeo.materialcalendarview.CalendarDay
 import com.applandeo.materialcalendarview.CalendarView
-import com.applandeo.materialcalendarview.EventDay
-import com.applandeo.materialcalendarview.listeners.OnCalendarPageChangeListener
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
 import java.util.Calendar
@@ -63,10 +61,6 @@ class TrainingFragment : Fragment(), MenuProvider {
 
     private lateinit var adapter: TrainingAdapter
 
-    var calendarDays: MutableList<CalendarDay> = ArrayList()
-    var calendar: Calendar = Calendar.getInstance()
-    var calendarDay = CalendarDay(calendar)
-
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -77,60 +71,13 @@ class TrainingFragment : Fragment(), MenuProvider {
         return binding.root
     }
 
-    private fun getSelectedDays(): List<Calendar> {
-        val calendars: MutableList<Calendar> = ArrayList()
-        for (i in 0..9) {
-            val calendar: Calendar = midnightCalendar
-            calendar.add(Calendar.DAY_OF_MONTH, i)
-            calendars.add(calendar)
-        }
-        return calendars
-    }
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         setUpViews(view)
 
         setUpButtonGroupAction()
-
-        calendarView.setOnForwardPageChangeListener(object : OnCalendarPageChangeListener {
-            override fun onChange() {
-                Toast.makeText(
-                    requireContext(),
-                    "Forward",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-
-        calendarView.setOnPreviousPageChangeListener(object : OnCalendarPageChangeListener {
-            override fun onChange() {
-                Toast.makeText(
-                    requireContext(),
-                    "Previous",
-                    Toast.LENGTH_SHORT
-                ).show()
-            }
-        })
-
-        calendarView.selectedDates = getSelectedDays()
-
-        val events: MutableList<EventDay> = java.util.ArrayList()
-
-        val cal = Calendar.getInstance()
-        cal.add(Calendar.DAY_OF_MONTH, 7)
-        events.add(EventDay(cal, R.drawable.sample_icon))
-
-        calendarView.setEvents(events)
-
-
-//        calendar.set(2024, 11, 11)
-//
-//        calendarDay.imageResource = R.drawable.sample_icon
-//        calendarDays.add(calendarDay)
-//
-//       calendarView.setCalendarDays(calendarDays)
-
 
         viewModel.trainingViewModel.nonNullObserver(viewLifecycleOwner) {
             when (it) {
@@ -140,11 +87,15 @@ class TrainingFragment : Fragment(), MenuProvider {
             }
         }
 
-        finishTrainingButton.setOnClickListener {
-            viewModel.finishTraining()
-            requireView().requestFocus()
-            onResume()
+        viewModel.calendarViewModel.nonNullObserver(viewLifecycleOwner) {
+            when (it) {
+                is StateLoading -> setUpLoading()
+                is StateSuccess -> it.data?.let { calendar -> getSelectedDay(calendar) }
+                is StateError -> sendToPageError()
+            }
         }
+
+        setUpFinishButton()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -167,6 +118,27 @@ class TrainingFragment : Fragment(), MenuProvider {
     override fun onResume() {
         super.onResume()
         setSelectedButton()
+        viewModel.getCalendar()
+    }
+
+    private fun setUpFinishButton() {
+        finishTrainingButton.setOnClickListener {
+            viewModel.finishTraining()
+            requireView().requestFocus()
+            updateCalendar()
+            onResume()
+        }
+    }
+
+    private fun updateCalendar() {
+        val calendar: Calendar = midnightCalendar
+        calendar.add(Calendar.DAY_OF_MONTH, Constants.ZERO)
+        viewModel.updateCalendar(calendar)
+    }
+
+
+    private fun getSelectedDay(calendar: CalendarData) {
+        calendarView.selectedDates = calendar.calendar
     }
 
     private fun setSelectedButton() {
@@ -234,7 +206,7 @@ class TrainingFragment : Fragment(), MenuProvider {
     }
 
     private fun setVisibleButton(data: TrainingData) {
-        if (data.exercises.size < 1) {
+        if (data.exercises.size < Constants.ONE) {
             finishTrainingButton.visibility = GONE
         } else {
             finishTrainingButton.visibility = VISIBLE

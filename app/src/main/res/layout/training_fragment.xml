@@ -71,7 +71,7 @@
             android:layout_marginTop="@dimen/default_18dp"
             android:elevation="@dimen/default_2dp"
             app:abbreviationsBarColor="#E36E6E"
-            app:abbreviationsLabelsColor="@android:color/white"
+            app:abbreviationsLabelsColor="@color/white"
             app:daysLabelsColor="@android:color/white"
             app:eventsEnabled="false"
             app:headerColor="#E36E6E"
@@ -81,7 +81,7 @@
             app:pagesColor="#FAA4A4"
             app:selectionColor="@android:color/white"
             app:selectionLabelColor="#3F51B5"
-            app:todayLabelColor="#AEEA00"
+            app:todayLabelColor="#303030"
             app:type="many_days_picker" />
 
         <ScrollView

@@ -1,7 +1,9 @@
 package br.com.myworkout.repository
 
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.Exercise
 import br.com.myworkout.data.TrainingData
+import java.util.Calendar
 
 interface TrainingRepository {
     fun getTrainingData(): TrainingData?
@@ -19,4 +21,8 @@ interface TrainingRepository {
     fun insertExercise(exercise: Exercise)
 
     fun deleteExercise(exercise: Exercise)
+
+    fun updateCalendar(calendar: Calendar)
+
+    fun getCalendar(): CalendarData?
 }
