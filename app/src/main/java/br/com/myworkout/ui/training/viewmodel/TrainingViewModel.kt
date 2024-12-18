@@ -31,6 +31,9 @@ class TrainingViewModel(
 
     val calendarViewModel: LiveData<StateResponse<CalendarData>> get() = _calendarViewModel
 
+    private val _enabledFinishButton = MutableLiveData<Boolean>()
+    val enabledFinishButton: LiveData<Boolean> get() = _enabledFinishButton
+
     fun finishTraining() {
         viewModelScope.launch {
             _trainingViewModel.postValue(StateLoading())
@@ -127,5 +130,9 @@ class TrainingViewModel(
                 _calendarViewModel.postValue(StateError())
             }
         }
+    }
+
+    fun setEnabledFinishButton(state: Boolean) {
+        _enabledFinishButton.postValue(state)
     }
 }

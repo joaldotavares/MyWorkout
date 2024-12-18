@@ -6,6 +6,7 @@ import android.view.ViewGroup
 import android.widget.CheckBox
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
 import br.com.myworkout.data.Exercise
@@ -20,6 +21,7 @@ class TrainingAdapter(
 ) : RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>() {
 
     private lateinit var binding: ExercisesItemBinding
+    private val checkedIndexes : MutableList<Int> = mutableListOf()
 
     var onItemClickListener: (exercise: Exercise) -> Unit = {}
     var onItemEditClickListener: (exercise: Exercise) -> Unit = {}
@@ -58,6 +60,14 @@ class TrainingAdapter(
         holder.check.isChecked = training.check
 
         holder.check.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) checkedIndexes.add(position) else checkedIndexes.remove(position)
+
+            if(checkedIndexes.size >= 2) {
+                viewModel.setEnabledFinishButton(true)
+            } else {
+                viewModel.setEnabledFinishButton(false)
+            }
+
             viewModel.manageTraining(
                 id = training.id,
                 name = training.name,
