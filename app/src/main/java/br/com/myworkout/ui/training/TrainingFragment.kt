@@ -2,9 +2,6 @@ package br.com.myworkout.ui.training
 
 import android.app.AlertDialog
 import android.os.Bundle
-import android.os.Handler
-import android.os.Looper
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.Menu
 import android.view.MenuInflater
@@ -23,8 +20,11 @@ import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import br.com.myworkout.R
+import br.com.myworkout.commons.Constants
+import br.com.myworkout.commons.extensions.midnightCalendar
 import br.com.myworkout.commons.extensions.nonNullObserver
 import br.com.myworkout.commons.extensions.showSnackBar
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.databinding.TrainingFragmentBinding
 import br.com.myworkout.ui.state.StateError
@@ -33,8 +33,10 @@ import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.adapter.TrainingAdapter
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModelFactory
+import com.applandeo.materialcalendarview.CalendarView
 import com.google.android.material.button.MaterialButton
 import com.google.android.material.button.MaterialButtonToggleGroup
+import java.util.Calendar
 
 
 class TrainingFragment : Fragment(), MenuProvider {
@@ -53,6 +55,8 @@ class TrainingFragment : Fragment(), MenuProvider {
     private lateinit var groupButton: MaterialButtonToggleGroup
     private lateinit var finishTrainingButton: Button
 
+    private lateinit var calendarView: CalendarView
+
     private lateinit var binding: TrainingFragmentBinding
 
     private lateinit var adapter: TrainingAdapter
@@ -70,6 +74,7 @@ class TrainingFragment : Fragment(), MenuProvider {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         activity?.addMenuProvider(this, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
         setUpViews(view)
 
         setUpButtonGroupAction()
@@ -82,11 +87,15 @@ class TrainingFragment : Fragment(), MenuProvider {
             }
         }
 
-        finishTrainingButton.setOnClickListener {
-            viewModel.finishTraining()
-            requireView().requestFocus()
-            onResume()
+        viewModel.calendarViewModel.nonNullObserver(viewLifecycleOwner) {
+            when (it) {
+                is StateLoading -> setUpLoading()
+                is StateSuccess -> it.data?.let { calendar -> getSelectedDay(calendar) }
+                is StateError -> sendToPageError()
+            }
         }
+
+        setUpFinishButton()
     }
 
     override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
@@ -109,6 +118,27 @@ class TrainingFragment : Fragment(), MenuProvider {
     override fun onResume() {
         super.onResume()
         setSelectedButton()
+        viewModel.getCalendar()
+    }
+
+    private fun setUpFinishButton() {
+        finishTrainingButton.setOnClickListener {
+            viewModel.finishTraining()
+            requireView().requestFocus()
+            updateCalendar()
+            onResume()
+        }
+    }
+
+    private fun updateCalendar() {
+        val calendar: Calendar = midnightCalendar
+        calendar.add(Calendar.DAY_OF_MONTH, Constants.ZERO)
+        viewModel.updateCalendar(calendar)
+    }
+
+
+    private fun getSelectedDay(calendar: CalendarData) {
+        calendarView.selectedDates = calendar.calendar
     }
 
     private fun setSelectedButton() {
@@ -157,6 +187,8 @@ class TrainingFragment : Fragment(), MenuProvider {
         fourthButtonGroup = view.findViewById(R.id.button_table_group_fourth)
         groupButton = view.findViewById(R.id.table_group_buttons)
         finishTrainingButton = view.findViewById(R.id.training_fragment_finish_button)
+        calendarView = view.findViewById(R.id.training_fragment_calendar)
+        finishTrainingButton.visibility = GONE
     }
 
     private fun sendToPageError() {
@@ -168,12 +200,13 @@ class TrainingFragment : Fragment(), MenuProvider {
     private fun setUpSuccess(data: TrainingData) {
         binding.fragmentTrainingProgressBar.visibility = GONE
         binding.fragmentTrainingRecyclerView.visibility = VISIBLE
+        calendarView.visibility = GONE
         setVisibleButton(data)
         configureAdapter(data)
     }
 
     private fun setVisibleButton(data: TrainingData) {
-        if (data.exercises.size < 1) {
+        if (data.exercises.size < Constants.ONE) {
             finishTrainingButton.visibility = GONE
         } else {
             finishTrainingButton.visibility = VISIBLE

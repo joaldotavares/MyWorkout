@@ -2,9 +2,11 @@ package br.com.myworkout.repository.source
 
 import android.content.Context
 import android.content.SharedPreferences
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.Exercise
 import br.com.myworkout.data.TrainingData
 import com.google.gson.Gson
+import java.util.Calendar
 
 class TrainingDataSourceImpl(
     val context: Context
@@ -58,6 +60,21 @@ class TrainingDataSourceImpl(
         save(EXERCISES, lista)
     }
 
+    override fun updateCalendar(calendar: Calendar) {
+        val markedDays =
+            gson.fromJson(sharedPreferences.getString(MARKED_DAYS, null), CalendarData::class.java)
+        markedDays?.calendar?.add(calendar)
+        save(MARKED_DAYS, markedDays)
+
+    }
+
+    override fun getCalendar(): CalendarData? {
+        return gson.fromJson(
+            sharedPreferences.getString(MARKED_DAYS, null),
+            CalendarData::class.java
+        )
+    }
+
     override fun <T> save(key: String, data: T) {
         val editor: SharedPreferences.Editor = sharedPreferences.edit()
         editor.putString(key, gson.toJson(data)).apply()
@@ -77,13 +94,14 @@ class TrainingDataSourceImpl(
         const val DATABASE_NAME = "my_workout_database"
         const val EXERCISES = "get_exercises_list"
         const val FIRST_ACCESS = "is_first_access"
+        const val MARKED_DAYS = "days_marked_on_calendar"
     }
 
     init {
-
+        val editor: SharedPreferences.Editor = sharedPreferences.edit()
         if (isFirstAccess()) {
-            val editor: SharedPreferences.Editor = sharedPreferences.edit()
             editor.putString(EXERCISES, gson.toJson(TrainingData(mutableListOf()))).apply()
+            editor.putString(MARKED_DAYS, gson.toJson(CalendarData(mutableListOf()))).apply()
         } else {
             setNotFirstAccess()
         }
