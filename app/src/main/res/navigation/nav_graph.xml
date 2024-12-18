@@ -46,7 +46,7 @@
     <fragment
         android:id="@+id/selectCategoryFragment"
         android:name="br.com.myworkout.ui.select.category.SelectCategoryFragment"
-        android:label="Selecione a Categoria">
+        android:label="Selecione a categoria">
         <action
             android:id="@+id/action_selectExerciseFragment_to_errorFragment"
             app:destination="@id/errorFragment" />
@@ -57,7 +57,7 @@
     <fragment
         android:id="@+id/selectExerciseFragment"
         android:name="br.com.myworkout.ui.select.exercise.SelectExerciseFragment"
-        android:label="Selecione o Exercicio">
+        android:label="Selecione o exercício">
         <argument
             android:name="category"
             app:argType="br.com.myworkout.data.Category" />

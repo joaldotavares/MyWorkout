@@ -1,8 +1,10 @@
 package br.com.myworkout.repository
 
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.Exercise
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.repository.source.TrainingDataSource
+import java.util.Calendar
 
 class TrainingRepositoryImpl(
     private val dataSource: TrainingDataSource
@@ -43,4 +45,11 @@ class TrainingRepositoryImpl(
         dataSource.deleteExerciseSP(exercise)
     }
 
+    override fun updateCalendar(calendar: Calendar) {
+        dataSource.updateCalendar(calendar)
+    }
+
+    override fun getCalendar(): CalendarData? {
+        return dataSource.getCalendar()
+    }
 }

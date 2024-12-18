@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import br.com.myworkout.data.CalendarData
 import br.com.myworkout.data.Exercise
 import br.com.myworkout.data.TrainingData
 import br.com.myworkout.repository.TrainingRepository
@@ -14,6 +15,7 @@ import br.com.myworkout.ui.state.StateResponse
 import br.com.myworkout.ui.state.StateSuccess
 import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.INSERT
 import kotlinx.coroutines.launch
+import java.util.Calendar
 
 class TrainingViewModel(
     private val repository: TrainingRepository
@@ -24,6 +26,10 @@ class TrainingViewModel(
 
     private val _observerState = MutableLiveData<StateAction>()
     val observerState: LiveData<StateAction> get() = _observerState
+
+    private val _calendarViewModel = MutableLiveData<StateResponse<CalendarData>>()
+
+    val calendarViewModel: LiveData<StateResponse<CalendarData>> get() = _calendarViewModel
 
     fun finishTraining() {
         viewModelScope.launch {
@@ -104,6 +110,22 @@ class TrainingViewModel(
             _trainingViewModel.postValue(StateSuccess(TrainingData(responseSpecifyType)))
         } catch (e: Exception) {
             _trainingViewModel.postValue(StateError())
+        }
+    }
+
+    fun updateCalendar(calendar: Calendar) {
+        repository.updateCalendar(calendar)
+    }
+
+    fun getCalendar() {
+        viewModelScope.launch {
+            _calendarViewModel.postValue(StateLoading())
+            try {
+                val response = repository.getCalendar()
+                _calendarViewModel.postValue(StateSuccess(response))
+            } catch (e: Exception) {
+                _calendarViewModel.postValue(StateError())
+            }
         }
     }
 }

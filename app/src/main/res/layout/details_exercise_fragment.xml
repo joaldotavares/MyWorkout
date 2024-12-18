@@ -17,15 +17,16 @@
         <ImageView
             android:id="@+id/details_training_image"
             android:layout_width="match_parent"
-            android:layout_height="250dp"
+            android:layout_height="0dp"
             app:imgUrl="@{exercise.image}"
             tools:src="@mipmap/ic_launcher_round"
-            android:scaleType="centerCrop"
-            android:layout_margin="@dimen/default_10dp"
+            android:layout_margin="@dimen/default_28dp"
+            android:scaleType="fitCenter"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            android:contentDescription="@string/details_exercise_fragment_image_description" />
+            android:contentDescription="@string/details_exercise_fragment_image_description"
+            app:layout_constraintBottom_toTopOf="@id/details_name"/>
 
         <TextView
             android:id="@+id/details_name"
@@ -158,7 +159,10 @@
             android:text="@string/details_exercise_fragment_type"
             android:textColor="@color/black"
             android:textSize="@dimen/default_22sp"
+            android:layout_marginBottom="@dimen/default_112dp"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintVertical_bias="0"
             app:layout_constraintTop_toBottomOf="@id/details_load" />
 
         <TextView
