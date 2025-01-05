@@ -210,6 +210,9 @@ class TrainingFragment : Fragment(), MenuProvider {
             finishTrainingButton.visibility = GONE
         } else {
             finishTrainingButton.visibility = VISIBLE
+            viewModel.enabledFinishButton.nonNullObserver(viewLifecycleOwner) {
+                finishTrainingButton.isEnabled = it
+            }
         }
     }
 
