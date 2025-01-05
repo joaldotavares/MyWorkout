@@ -21,7 +21,7 @@ class TrainingAdapter(
 ) : RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>() {
 
     private lateinit var binding: ExercisesItemBinding
-    private val checkedIndexes : MutableList<Int> = mutableListOf()
+    private val checkedIndexes : MutableSet<Int> = mutableSetOf()
 
     var onItemClickListener: (exercise: Exercise) -> Unit = {}
     var onItemEditClickListener: (exercise: Exercise) -> Unit = {}
