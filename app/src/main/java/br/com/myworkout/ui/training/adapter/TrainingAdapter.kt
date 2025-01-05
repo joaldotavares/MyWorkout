@@ -12,7 +12,6 @@ import br.com.myworkout.data.Exercise
 import br.com.myworkout.databinding.ExercisesItemBinding
 import br.com.myworkout.ui.training.ManageTrainingFragment.Companion.UPDATE
 import br.com.myworkout.ui.training.viewmodel.TrainingViewModel
-import com.bumptech.glide.Glide
 
 class TrainingAdapter(
     private val exercises: MutableList<Exercise>,
@@ -20,6 +19,7 @@ class TrainingAdapter(
 ) : RecyclerView.Adapter<TrainingAdapter.TrainingViewHolder>() {
 
     private lateinit var binding: ExercisesItemBinding
+    private val checkedIndexes: MutableSet<Int> = mutableSetOf()
 
     var onItemClickListener: (exercise: Exercise) -> Unit = {}
     var onItemEditClickListener: (exercise: Exercise) -> Unit = {}
@@ -57,7 +57,20 @@ class TrainingAdapter(
         holder.load.text = training.load
         holder.check.isChecked = training.check
 
+        if (checkedIndexes.size >= 2) {
+            viewModel.setEnabledFinishButton(true)
+        } else {
+            viewModel.setEnabledFinishButton(false)
+        }
+
         holder.check.setOnCheckedChangeListener { _, isChecked ->
+            if (isChecked) checkedIndexes.add(position) else checkedIndexes.remove(position)
+
+            if (checkedIndexes.size >= 2) {
+                viewModel.setEnabledFinishButton(true)
+            } else {
+                viewModel.setEnabledFinishButton(false)
+            }
             viewModel.manageTraining(
                 id = training.id,
                 name = training.name,
